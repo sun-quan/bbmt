@@ -1,0 +1,139 @@
+.commodityGroup ion-content {
+  background-color: #fff;
+  bottom: 50px; }
+  .commodityGroup ion-content .bigImg {
+    width: 100%; }
+    .commodityGroup ion-content .bigImg img {
+      width: 100%;
+      vertical-align: bottom; }
+  .commodityGroup ion-content .desc {
+    margin: 20px 15px;
+    height: 100px; }
+    .commodityGroup ion-content .desc .bottom {
+      position: inherit; }
+  .commodityGroup ion-content .split-line {
+    height: 5px;
+    background-color: #f3f5f7; }
+  .commodityGroup ion-content .activity-address {
+    height: 100px; }
+    .commodityGroup ion-content .activity-address .address-title {
+      margin-left: 11px;
+      padding-left: 3px;
+      height: 40px;
+      line-height: 40px; }
+      .commodityGroup ion-content .activity-address .address-title span {
+        border-left: 2px solid #FAD20A;
+        color: #333;
+        font-size: 12px;
+        padding-left: 3px; }
+    .commodityGroup ion-content .activity-address .address-content {
+      height: 60px;
+      margin-left: 15px;
+      border-top: 1px solid #E8ECF2;
+      color: #666;
+      display: -webkit-box;
+      -webkit-box-align: center; }
+      .commodityGroup ion-content .activity-address .address-content .store-name {
+        font-size: 14px; }
+      .commodityGroup ion-content .activity-address .address-content .store-address {
+        font-size: 12px; }
+  .commodityGroup ion-content .activity-tips {
+    height: 100px; }
+    .commodityGroup ion-content .activity-tips .tips-title {
+      margin-left: 11px;
+      padding-left: 3px;
+      height: 40px;
+      line-height: 40px; }
+      .commodityGroup ion-content .activity-tips .tips-title span {
+        border-left: 2px solid #FAD20A;
+        color: #333;
+        font-size: 12px;
+        padding-left: 3px; }
+    .commodityGroup ion-content .activity-tips .tips-content {
+      height: 60px;
+      margin-left: 15px;
+      border-top: 1px solid #E8ECF2;
+      color: #666;
+      font-size: 12px;
+      display: -webkit-box;
+      -webkit-box-align: center; }
+  .commodityGroup ion-content .activity-time {
+    height: 60px;
+    padding-left: 15px;
+    display: -webkit-box;
+    -webkit-box-align: center; }
+    .commodityGroup ion-content .activity-time .time-title {
+      font-size: 12px;
+      color: #000;
+      margin-right: 24px;
+      display: block; }
+    .commodityGroup ion-content .activity-time .time-hours {
+      font-size: 15px;
+      padding: 5px;
+      border-radius: 5px;
+      color: #FFF;
+      background-color: #000;
+      text-align: center;
+      line-height: 24px;
+      display: block; }
+    .commodityGroup ion-content .activity-time .time-minute {
+      font-size: 15px;
+      padding: 5px;
+      border-radius: 5px;
+      color: #FFF;
+      background-color: #000;
+      text-align: center;
+      line-height: 24px;
+      display: block; }
+    .commodityGroup ion-content .activity-time .time-second {
+      font-size: 15px;
+      padding: 5px;
+      border-radius: 5px;
+      color: #FFF;
+      background-color: #000;
+      text-align: center;
+      line-height: 24px;
+      display: block; }
+  .commodityGroup ion-content .member-info {
+    height: 55px;
+    font-size: 14px;
+    color: #333;
+    display: -webkit-box;
+    -webkit-box-align: center;
+    -webkit-box-pack: center; }
+    .commodityGroup ion-content .member-info .member-count {
+      color: #E65A16;
+      font-size: 18px; }
+  .commodityGroup ion-content .share-text {
+    height: 30px;
+    background-image: -webkit-linear-gradient(90deg, transparent 49%, #E8ECF2 49%, #E8ECF2 51%, transparent 51%, transparent);
+    text-align: center; }
+    .commodityGroup ion-content .share-text span {
+      padding: 0 23px;
+      line-height: 30px;
+      font-size: 12px;
+      color: #666;
+      background-color: #FFF; }
+  .commodityGroup ion-content .share-btn {
+    display: -webkit-box;
+    -webkit-box-pack: center;
+    font-size: 12px;
+    color: #666; }
+    .commodityGroup ion-content .share-btn .shareAppMessage {
+      margin: 0 20px;
+      text-align: center; }
+    .commodityGroup ion-content .share-btn .shareTimeline {
+      margin: 0 20px;
+      text-align: center; }
+    .commodityGroup ion-content .share-btn img {
+      height: 50px; }
+  .commodityGroup ion-content .commodityContent {
+    width: 100%;
+    min-height: 300px; }
+    .commodityGroup ion-content .commodityContent img {
+      vertical-align: bottom;
+      min-height: 60px;
+      width: 100%; }
+  .commodityGroup ion-content .empty {
+    text-align: center;
+    padding-top: 200px; }

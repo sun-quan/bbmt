@@ -1,0 +1,66 @@
+<!--
+    图片
+-->
+<div ng-if="showpage">
+    
+<div class="main-content" ng-repeat="list in showList.content">
+    <div ng-repeat="item in list.moduleList">
+        <img ng-src="{{showList.adminUrl+item.image}}" ng-if="item.moduleType==1"/>
+    </div>
+</div>
+<!--
+    商品
+-->
+<div class="commodities" ng-repeat="item in showList.commodities">
+    <img  ng-src="{{showList.adminUrl+item.scan}}" />
+    <div class="desc" ng-if="!item.name &amp;&amp; !item.empty">
+        <p class="title" ng-bind="item.commodityName">
+            
+        </p>
+        <div class="bottom">
+            <span class="txt-price" ng-bind="item.promotion|currency:'¥'">
+            </span>
+            <div class="number">
+                <span class="minusCount">
+                    <div ng-show="item.count >0" style="display: table" class="ng-hide">
+                        <span class="minus" ng-click="addItem(item,-1)">
+                        </span>
+                        <span class="count" >
+                            <span class="count-text" ng-bind="item.count">
+                            </span>
+                        </span>
+                    </div>
+                </span>
+                <span class="plus" ng-click="addItem(item,1)">
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+<!--
+    尾部
+-->
+<div class="bar bar-footer bar-dark">
+    <div class="row-basket">
+        <div class="media-basket">
+            <div class="media-body">
+                <i class="icon-basket">
+                    <div class="xs-badge">
+                        <span class="badge" ng-bind="showList.count">
+                            0
+                        </span>
+                    </div>
+                </i>
+                <div class="price" ng-bind="showList.price|currency:'¥'">
+                </div>
+                <div class="price" style="color:#fff">送豆浆x1</div>
+            </div>
+        </div>
+        <div class="basket-btn" ng-click="submitOrder()" style="pointer-events: auto;">
+            <a class="btn-o-tobuy" ng-class="{'btn-o-tobuy-none':showList.count<=0}" ng-bind="showList.count >0 ? '立即支付':'选择任意餐品'">
+                选择任意餐品
+            </a>
+        </div>
+    </div>
+</div>
+</div>

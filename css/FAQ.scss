@@ -1,0 +1,46 @@
+.FAQ{
+  ion-content{
+    .QA{
+      padding: 10px;
+      background-color: #FFFFFF;
+      border-bottom: 1px solid #E8ECF2;
+      .Q{
+        display: -webkit-box;
+        //-webkit-box-align: center;
+        //-webkit-box-pack: center;
+        .title{
+          text-align: left;
+          margin-left: 5px;
+          font-size: 13px;
+          color: #333;
+        }
+        .icon-Q{
+          display: block;
+          background-image: url(../img/FAQ/icon-Q.png);
+          width: 21px;
+          background-repeat: no-repeat;
+          background-size: 100%;
+        }
+      }
+      .A{
+        margin-top: 14px;
+        display: -webkit-box;
+        //-webkit-box-align: center;
+        //-webkit-box-pack: center;
+        .icon-A{
+          display: block;
+          background-image: url(../img/FAQ/icon-A.png);
+          width: 21px;
+          background-repeat: no-repeat;
+          background-size: 100%;
+        }
+        .content{
+          margin-left: 5px;
+          font-size: 11px;
+          color: #666;
+          -webkit-box-flex: 1;
+        }
+      }
+    }
+  }
+}

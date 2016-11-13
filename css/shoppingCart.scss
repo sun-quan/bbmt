@@ -1,0 +1,117 @@
+.shoppingCart{
+  .bar-energized{
+    .btn-right{
+      line-height: 34px;
+      position: absolute;
+      right: 10px;
+      color: #a35a1f!important;
+      font-size: 12px;
+      &.delete{
+        background-image: url(../img/shoppingCart/icon-del.png);
+        background-size: 22px;
+        background-position: center;
+        background-repeat: no-repeat;
+        width: 40px;
+        height: 34px;
+      }
+    }
+  }
+  ion-content{
+    .cart{
+      background-color: #ffffff;
+      margin-bottom: 10px;
+      >.title{
+        height: 40px;
+        position: relative;
+        padding-left: 10px;
+        padding-right: 14px;
+        display: -webkit-box;
+        width: 100%;
+        border-bottom: 1px #e8ecf2 solid;
+        p{
+          position: absolute;
+          height: 40px;
+          line-height: 40px;
+          right: 14px;
+          top:0;
+        }
+        .checkbox{
+          padding: 0;
+          margin-top: 6px;
+          input:checked:before{
+            background: #fad20a;
+            border-color: #fad20a;
+          }
+        }
+        .mealInfo{
+          display: table-cell;
+          vertical-align: middle;
+          padding-left: 5px;
+          padding-right: 6px;
+          height: 40px;
+        }
+        i[class^="icon"]{
+          margin-top: 11px;
+        }
+      }
+      .list{
+        padding-top: 0;
+        padding-bottom: 0;
+        margin-bottom: 0;
+        .xs-item1{
+
+        }
+      }
+      .footer{
+        height: 40px;
+        font-size: 14px;
+        text-align: right;
+        border-top: 1px #e8ecf2 solid;
+        padding-right: 10px;
+        span{
+          line-height: 40px;
+          display: inline-block;
+        }
+        .price{
+          color: #e65a16;
+          font-weight: bold;
+        }
+      }
+    }
+    .empty{
+      height: 50px;
+      width: 100%;
+    }
+    .market-empty{
+      .market{
+        background-image: url(../img/shoppingCart/icon-cart.png);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        height: 120px;
+        width: 120px;
+        margin: 100px auto 10px auto;
+        border-radius: 50%;
+      }
+      .tips{
+        margin-bottom: 20px;
+        font-size: 12px;
+        color: #666666;
+      }
+      .xs-btn{
+        box-shadow: 0 8px 6px rgba(0,0,0,0.05);
+        margin: 0 auto;
+        background: #fad20a;
+        text-align: center;
+        text-decoration: none;
+        display: block;
+        color: #000000;
+        width: 220px;
+        height: 50px;
+        line-height: 50px;
+        border-radius: 30px;
+        font-size: 14px;
+      }
+    }
+  }
+}

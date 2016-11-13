@@ -1,0 +1,173 @@
+.commodityGroup{
+  ion-content{
+    background-color: #fff;
+    bottom:50px;
+    .bigImg{
+      width: 100%;
+      img{
+        width: 100%;
+        vertical-align: bottom;
+      }
+    }
+    .desc{
+      margin: 20px 15px;
+      height: 100px;
+      .bottom{
+        position: inherit;
+      }
+    }
+    .split-line{
+      height: 5px;
+      background-color: #f3f5f7;
+    }
+    .activity-address{
+      height: 100px;
+      .address-title{
+        margin-left: 11px;
+        padding-left: 3px;
+        height: 40px;
+        line-height: 40px;
+        span{
+          border-left: 2px solid #FAD20A;
+          color: #333;
+          font-size: 12px;
+          padding-left: 3px;
+        }
+      }
+      .address-content{
+        height: 60px;
+        margin-left: 15px;
+        border-top: 1px solid #E8ECF2;
+        color: #666;
+        display: -webkit-box;
+        -webkit-box-align: center;
+        .store-name{
+          font-size: 14px;
+        }
+        .store-address{
+          font-size: 12px;
+        }
+      }
+    }
+    .activity-tips{
+      height: 100px;
+      .tips-title{
+        margin-left: 11px;
+        padding-left: 3px;
+        height: 40px;
+        line-height: 40px;
+        span{
+          border-left: 2px solid #FAD20A;
+          color: #333;
+          font-size: 12px;
+          padding-left: 3px;
+        }
+      }
+      .tips-content{
+        height: 60px;
+        margin-left: 15px;
+        border-top: 1px solid #E8ECF2;
+        color: #666;
+        font-size: 12px;
+        display: -webkit-box;
+        -webkit-box-align: center;
+      }
+    }
+    .activity-time{
+      height: 60px;
+      padding-left: 15px;
+      display: -webkit-box;
+      -webkit-box-align: center;
+      .time-title{
+        font-size: 12px;
+        color: #000;
+        margin-right: 24px;
+        display: block;
+      }
+      .time-hours{
+        font-size: 15px;
+        padding: 5px;
+        border-radius: 5px;
+        color: #FFF;
+        background-color: #000;
+        text-align: center;
+        line-height: 24px;
+        display: block;
+      }
+      .time-minute{
+        font-size: 15px;
+        padding: 5px;
+        border-radius: 5px;
+        color: #FFF;
+        background-color: #000;
+        text-align: center;
+        line-height: 24px;
+        display: block;
+      }
+      .time-second{
+        font-size: 15px;
+        padding: 5px;
+        border-radius: 5px;
+        color: #FFF;
+        background-color: #000;
+        text-align: center;
+        line-height: 24px;
+        display: block;
+      }
+    }
+    .member-info{
+      height: 55px;
+      font-size: 14px;
+      color: #333;
+      display: -webkit-box;
+      -webkit-box-align: center;
+      -webkit-box-pack: center;
+      .member-count{
+        color: #E65A16;
+        font-size: 18px;
+      }
+    }
+    .share-text{
+      height: 30px;
+      background-image:-webkit-linear-gradient(90deg,transparent 49%,#E8ECF2 49%,#E8ECF2 51%,transparent 51%,transparent);
+      text-align: center;
+      span{
+        padding: 0 23px;
+        line-height: 30px;
+        font-size: 12px;
+        color: #666;
+        background-color: #FFF;
+      }
+    }
+    .share-btn{
+      display: -webkit-box;
+      -webkit-box-pack: center;
+      font-size: 12px;
+      color: #666;
+      .shareAppMessage{
+        margin: 0 20px;
+        text-align: center;
+      }
+      .shareTimeline{
+        margin: 0 20px;
+        text-align: center;
+      }
+      img{
+        height: 50px;
+      }
+    }
+    .commodityContent{
+      width: 100%;
+      min-height: 300px;
+      img{
+        vertical-align: bottom;
+        min-height: 60px;
+        width: 100%;
+      }
+    }
+    .empty{
+      text-align: center;
+      padding-top: 200px;
+    }
+  }
+}

@@ -1,0 +1,282 @@
+.order {
+  >.order-title {
+    background: #fff;
+    padding: 0;
+    position: fixed;
+    top: 44px;
+    z-index: 1;
+    .col-25{
+      -webkit-box-flex: 1;
+      height: 34px;
+    }
+    .in {
+      text-align: center;
+      font-size: 14px;
+      line-height: 34px;
+    }
+    .active {
+      border-bottom: 2px solid #fad20a;
+    }
+    .line {
+      position: absolute;
+      left: 25%;
+      height: 20px;
+      background: #e8ebf2;
+      width: 1px;
+      top: 50%;
+      margin-top: -10px;
+    }
+    .line2 {
+      position: absolute;
+      left: 50%;
+      height: 20px;
+      background: #e8ebf2;
+      width: 1px;
+      top: 50%;
+      margin-top: -10px;
+    }
+    .line3 {
+      position: absolute;
+      left: 75%;
+      height: 20px;
+      background: #e8ebf2;
+      width: 1px;
+      top: 50%;
+      margin-top: -10px;
+    }
+  }
+  ion-content {
+    padding-top: 34px;
+    .order-item{
+      margin: 10px 10px 0 10px;
+      background-color: #FFFFFF;
+      line-height: 40px;
+      border-radius: 10px;
+      .order-title{
+        height: 40px;
+        font-size: 12px;
+        color: #ffffff;
+        padding-right: 10px;
+        padding-left: 10px;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        .order-number{
+          font-size: 22px;
+        }
+        &.nopay{
+          background-color: #48cfad;
+        }
+        &.wait{
+          background-color: #e75a15;
+        }
+        &.over{
+          background-color: #646E78;
+        }
+        &.cancel{
+          background-color: #B7A282;
+        }
+        .order-time{
+
+        }
+        .order-price{
+          float: right;
+        }
+      }
+      .order-states{
+        border-bottom: 1px solid #e8ecf2;
+        height: 80px;
+        .schedule{
+          margin: 10px 20px 0;
+          display: -webkit-box;
+          -webkit-box-pack: justify;
+          .schedule-item-first {
+            text-align: center;
+            background: #fff;
+            .point{
+              width: 36px;
+              height: 36px;
+              position: relative;
+              .icon-schedule{
+                width: 36px;
+                height: 36px;
+                display: block;
+                background-image: url(../img/order/schedule.png);
+                background-size: contain;
+                background-repeat: no-repeat;
+              }
+              .content{
+                text-align: center;
+                width: 80px;
+                position: absolute;
+                left: 50%;
+                -webkit-transform: translateX(-50%);
+                top: 40px;
+                line-height: 18px;
+                .finishtime{
+                  font-size: 12px;
+                }
+              }
+            }
+            &.active{
+              .point{
+                .icon-schedule{
+                  background-image: url(../img/order/schedule_active.png);
+                }
+              }
+            }
+          }
+          .schedule-item {
+            -webkit-box-flex: 1;
+            background: #fff;
+            -webkit-box-align: center;
+            display: -webkit-box;
+            .line {
+              height: 2px;
+              background-color: #E8ECF2;
+              -webkit-box-flex: 1;
+            }
+            .point {
+              width: 36px;
+              height: 36px;
+              position: relative;
+              .icon-schedule {
+                width: 36px;
+                height: 36px;
+                display: block;
+                background-image: url(../img/order/schedule.png);
+                background-size: contain;
+                background-repeat: no-repeat;
+              }
+              .content{
+                text-align: center;
+                width: 80px;
+                position: absolute;
+                left: 50%;
+                -webkit-transform: translateX(-50%);
+                top: 40px;
+                line-height: 18px;
+                .finishtime{
+                  font-size: 12px;
+                }
+              }
+            }
+            &.active{
+              .line{
+                background-color: #15cca9;
+              }
+              .point{
+                .icon-schedule{
+                  background-image: url(../img/order/schedule_active.png);
+                }
+              }
+            }
+          }
+        }
+      }
+      .commodity-list{
+        height: 60px;
+        padding: 5px;
+        padding-right: 10px;
+        line-height: 50px;
+        background-image: url(../img/arrow.png);
+        background-repeat: no-repeat;
+        background-position: 100% 50%;
+        background-size: 21px;
+        background-origin: content-box;
+        border-bottom: 1px solid #e8ecf2;
+        .commodity{
+          margin-right: 5px;
+          display: inline-block;
+          img{
+            width: 50px;
+            height: 50px;
+            vertical-align: bottom;
+          }
+        }
+        .commodity-count{
+          float: right;
+          margin-right: 20px;
+        }
+      }
+      .group-info{
+        height: 40px;
+        line-height: 40px;
+        border-bottom: 1px solid #e8ecf2;
+        padding-left: 5px;
+        padding-right: 10px;
+        background-image: url(../img/arrow.png);
+        background-repeat: no-repeat;
+        background-position: 100% 50%;
+        background-size: 21px;
+        background-origin: content-box;
+      }
+      .store{
+        height: 40px;
+        line-height: 40px;
+        border-bottom: 1px solid #e8ecf2;
+        padding-left: 5px;
+      }
+      .order-btn{
+        height: 50px;
+        text-align: right;
+        line-height: 50px;
+        .tips-paying{
+          color: #000;
+          margin-right: 10px;
+        }
+        a[class^="btn"]{
+          margin-right: 10px;
+          width: 90px;
+          font-size: 14px;
+          height: 30px;
+          display: inline-block;
+          border:1px solid #e8ecf2;
+          border-radius: 20px;
+          text-align: center;
+          line-height: 30px;
+        }
+        .btn-cancel{
+          color: #333;
+        }
+        .btn-pay{
+          color: #e65a16;
+          border-color: #e65a16 !important;
+        }
+      }
+    }
+    .order-empty{
+      margin-top: 60px;
+      text-align: center;
+      .ico_order_empty{
+        display: block;
+        width: 120px;
+        height: 120px;
+        background-image: url(../img/order/ico_order_empty.png);
+        background-repeat: no-repeat;
+        background-size: 100%;
+        margin-bottom: 10px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .tips{
+        margin-bottom: 20px;
+        font-size: 12px;
+        color: #666666;
+      }
+      .xs-btn{
+        box-shadow: 0 8px 6px rgba(0,0,0,0.05);
+        margin: 0 auto;
+        background: #fad20a;
+        text-align: center;
+        text-decoration: none;
+        display: block;
+        color: #000;
+        width: 220px;
+        height: 50px;
+        line-height: 50px;
+        border-radius: 30px;
+        font-size: 14px;
+      }
+    }
+  }
+}

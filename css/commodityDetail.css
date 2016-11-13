@@ -1,0 +1,31 @@
+.commodityDetail ion-content {
+  background-color: #fff;
+  bottom: 50px; }
+  .commodityDetail ion-content .bigImg {
+    width: 100%; }
+    .commodityDetail ion-content .bigImg img {
+      width: 100%;
+      vertical-align: bottom; }
+  .commodityDetail ion-content .desc {
+    margin: 20px 15px;
+    height: 100px; }
+    .commodityDetail ion-content .desc .bottom {
+      position: inherit; }
+    .commodityDetail ion-content .desc .commodityDes {
+      font-size: 14px;
+      color: #676767;
+      line-height: 22px;
+      margin-top: 5px; }
+  .commodityDetail ion-content .split-line {
+    height: 5px;
+    background-color: #f3f5f7; }
+  .commodityDetail ion-content .commodityContent {
+    width: 100%;
+    min-height: 300px; }
+    .commodityDetail ion-content .commodityContent img {
+      vertical-align: bottom;
+      min-height: 60px;
+      width: 100%; }
+  .commodityDetail ion-content .empty {
+    text-align: center;
+    padding-top: 200px; }

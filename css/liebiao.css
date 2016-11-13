@@ -1,0 +1,83 @@
+.itemList ion-header-bar .title .container {
+  position: relative; }
+  .itemList ion-header-bar .title .container.icon {
+    display: inline-block;
+    height: 44px;
+    background-image: url(../img/icon.png);
+    background-size: 20px;
+    background-repeat: no-repeat;
+    background-position-y: center; }
+  .itemList ion-header-bar .title .container .storeName {
+    margin-left: 25px; }
+  .itemList ion-header-bar .title .container .ion-ios-arrow-right {
+    margin-left: 5px; }
+
+.itemList .subList {
+  width: 70px;
+  background-color: #f2f5fa;
+  text-align: center;
+  border-right: 1px solid #e0e5ec;
+  border-top: 0;
+  position: absolute;
+  top: 44px;
+  height: 100%;
+  z-index: 1; }
+  .itemList .subList .item {
+    font-size: 14px;
+    color: #000000;
+    padding: 0;
+    background-color: #f2f5fa;
+    border-color: #e0e5ec;
+    border-left: 0;
+    border-right: 0;
+    height: 40px;
+    line-height: 40px;
+    margin-left: 0;
+    margin-right: 0;
+    position: relative; }
+    .itemList .subList .item:first-child {
+      border-top: 0; }
+    .itemList .subList .item.active {
+      background-color: #ffffff;
+      margin-right: -1px; }
+    .itemList .subList .item.active:after {
+      content: " ";
+      border-left: 2px solid #f9d209;
+      display: block;
+      height: 24px;
+      width: 10px;
+      position: absolute;
+      top: 8px;
+      left: 0; }
+    .itemList .subList .item .xs-badge {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      text-align: right; }
+
+.itemList ion-content {
+  bottom: 50px;
+  background-color: #ffffff; }
+  .itemList ion-content .mainContent {
+    display: -webkit-box; }
+    .itemList ion-content .mainContent .left {
+      width: 70px; }
+    .itemList ion-content .mainContent .list-content {
+      -webkit-box-flex: 1; }
+    .itemList ion-content .mainContent .xs-item1.item-divider {
+      padding: 0 9px;
+      color: #333333;
+      font-size: 12px;
+      height: 30px;
+      line-height: 30px;
+      background-color: #f5f5f5; }
+
+.itemList .list .xs-item1 {
+  width: 100% !important;
+  height: 90px;
+  padding: 10px 10px 10px 5px; }
+  .itemList .list .xs-item1 img {
+    height: 70px;
+    width: 70px; }
+  .itemList .list .xs-item1 .desc .title {
+    margin: 0 0 2px 0; }

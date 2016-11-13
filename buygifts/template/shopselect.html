@@ -1,0 +1,29 @@
+<div  id="shop">
+    <div class="header-title">
+        选择门店
+    </div>
+    <div class="contents">
+        <div class="left">
+              <ion-scroll>
+            <div class="li" ng-bind="value.districtName" ng-class="{'active':key==showList.nowDistrict}" ng-if="value.data.length>0"  ng-click="leftSelect(key)" ng-repeat="(key, value) in showList.districtStoreList">
+            </div>
+        </ion-scroll>
+        </div>
+        <div class="right">
+            
+        <ion-scroll delegate-handle="right" >
+            <div class="li"  ng-repeat="(key, shops) in showList.districtStoreList[showList.nowDistrict].data" >
+                <div class="store-content" ng-click="orderPay(shops.storeId)">
+                    <div class="name" ng-bind="shops.name">
+                        
+                    </div>
+                    <div class="address" ng-bind="shops.address">
+                        
+                    </div>
+                </div>
+            </div>
+        </ion-scroll>
+                </div>
+
+    </div>
+</div>

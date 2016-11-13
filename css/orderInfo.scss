@@ -1,0 +1,230 @@
+.orderInfo{
+  ion-content{
+    &.has-btn{
+      bottom: 50px;
+    }
+    .order-info{
+      padding: 0 10px;
+      background-color: #FFFFFF;
+      .order-title{
+        font-size: 12px;
+        color: #333;
+        border-bottom: 1px solid #e8ecf2;
+        height: 50px;
+        line-height: 50px;
+      }
+      .order-number{
+        height: 190px;
+        text-align: center;
+        border-bottom: 1px solid #e8ecf2;
+        .title{
+          margin: 20px auto 0;
+          font-size: 14px;
+          color: #999999;
+        }
+        .orderNumber{
+          span{
+            color: #E55A17;
+            font-size: 90px;
+            line-height: 90px;
+          }
+        }
+        .tips{
+          padding: 30px 0 0;
+          color: #333;
+          font-size: 12px;
+        }
+      }
+      .order-states{
+        border-bottom: 1px solid #e8ecf2;
+        height: 80px;
+        .schedule{
+          margin: 10px 20px 0;
+          display: -webkit-box;
+          -webkit-box-pack: justify;
+          .schedule-item-first {
+            text-align: center;
+            background: #fff;
+            .point{
+              width: 36px;
+              height: 36px;
+              position: relative;
+              .icon-schedule{
+                width: 36px;
+                height: 36px;
+                display: block;
+                background-image: url(../img/order/schedule.png);
+                background-size: contain;
+                background-repeat: no-repeat;
+              }
+              .content{
+                text-align: center;
+                width: 80px;
+                position: absolute;
+                left: 50%;
+                -webkit-transform: translateX(-50%);
+                top: 40px;
+                line-height: 18px;
+                .finishtime{
+                  font-size: 12px;
+                }
+              }
+            }
+            &.active{
+              .point{
+                .icon-schedule{
+                  background-image: url(../img/order/schedule_active.png);
+                }
+              }
+            }
+          }
+          .schedule-item {
+            -webkit-box-flex: 1;
+            background: #fff;
+            -webkit-box-align: center;
+            display: -webkit-box;
+            .line {
+              height: 2px;
+              background-color: #E8ECF2;
+              -webkit-box-flex: 1;
+            }
+            .point {
+              width: 36px;
+              height: 36px;
+              position: relative;
+              .icon-schedule {
+                width: 36px;
+                height: 36px;
+                display: block;
+                background-image: url(../img/order/schedule.png);
+                background-size: contain;
+                background-repeat: no-repeat;
+              }
+              .content{
+                text-align: center;
+                width: 80px;
+                position: absolute;
+                left: 50%;
+                -webkit-transform: translateX(-50%);
+                top: 40px;
+                line-height: 18px;
+                .finishtime{
+                  font-size: 12px;
+                }
+              }
+            }
+            &.active{
+              .line{
+                background-color: #15cca9;
+              }
+              .point{
+                .icon-schedule{
+                  background-image: url(../img/order/schedule_active.png);
+                }
+              }
+            }
+          }
+        }
+      }
+      .order-store{
+        background-color: #FFFFFF;
+        height: 40px;
+        line-height: 40px;
+        //background-image: url(../img/arrow.png);
+        background-repeat: no-repeat;
+        background-position: 100% 50%;
+        background-size: 21px;
+        border-bottom: 1px solid #e8ecf2;
+        display: -webkit-box;
+        -webkit-box-align: center;
+        i.icon-store{
+          display: block;
+          width: 30px;
+          height: 30px;
+          background-image: url(../img/order/icon-store.png);
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size: contain;
+          margin:0 6px;
+        }
+      }
+      .order-price{
+        padding: 0 6px;
+        background-color: #FFFFFF;
+        >div{
+          height: 40px;
+          border-bottom: 1px solid #e8ecf2;
+          display: -webkit-box;
+          -webkit-box-pack: justify;
+          -webkit-box-align: center;
+          &:last-child{
+            border-bottom:0;
+          }
+          .price{
+            color: #e65a16;
+            &:first-child{
+              color: #333;
+            }
+          }
+        }
+      }
+      .order-detail{
+        padding: 0 6px;
+        .title{
+          height: 40px;
+          margin: 0 -16px;
+          display: -webkit-box;
+          padding: 0 16px;
+          -webkit-box-align: center;
+          border-bottom: 1px solid #e8ecf2;
+          .icon-order{
+            display: block;
+            width: 30px;
+            height: 30px;
+            background-image: url(../img/order/icon-order.png);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+            margin-right: 6px;
+          }
+        }
+        .content{
+          margin: 0 -16px;
+          padding: 16px 16px 0;
+          div{
+            padding-bottom: 13px;
+            color: #333;
+            font-size: 12px;
+            .left{
+              color: #666;
+            }
+          }
+        }
+      }
+      .list{
+        margin-bottom: 0;
+        .xs-item1{
+          background-color: white;
+          padding: 10px 0;
+        }
+      }
+      .spline{
+        height: 10px;
+        margin: 0 -10px;
+        background-color: #f3f5f8;
+      }
+    }
+  }
+  .btn-pay{
+    height: 50px;
+    background-color: #f9d20b;
+    display: -webkit-box;
+    -webkit-box-pack: center;
+    -webkit-box-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    color: #784203;
+    font-size: 16px;
+  }
+}

@@ -1,0 +1,31 @@
+.FAQ ion-content .QA {
+  padding: 10px;
+  background-color: #FFFFFF;
+  border-bottom: 1px solid #E8ECF2; }
+  .FAQ ion-content .QA .Q {
+    display: -webkit-box; }
+    .FAQ ion-content .QA .Q .title {
+      text-align: left;
+      margin-left: 5px;
+      font-size: 13px;
+      color: #333; }
+    .FAQ ion-content .QA .Q .icon-Q {
+      display: block;
+      background-image: url(../img/FAQ/icon-Q.png);
+      width: 21px;
+      background-repeat: no-repeat;
+      background-size: 100%; }
+  .FAQ ion-content .QA .A {
+    margin-top: 14px;
+    display: -webkit-box; }
+    .FAQ ion-content .QA .A .icon-A {
+      display: block;
+      background-image: url(../img/FAQ/icon-A.png);
+      width: 21px;
+      background-repeat: no-repeat;
+      background-size: 100%; }
+    .FAQ ion-content .QA .A .content {
+      margin-left: 5px;
+      font-size: 11px;
+      color: #666;
+      -webkit-box-flex: 1; }

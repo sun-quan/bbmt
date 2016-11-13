@@ -1,0 +1,115 @@
+.address .bar-energized .btn-right {
+  line-height: 34px;
+  position: absolute;
+  right: 10px;
+  color: #a35a1f !important;
+  font-size: 12px; }
+
+.address ion-content .address-item {
+  width: 100%;
+  height: 120px;
+  padding: 10px;
+  background-color: #FFF; }
+  .address ion-content .address-item:not(:first-child) {
+    margin-top: 5px; }
+  .address ion-content .address-item.unavailable .part1 .name-phone {
+    color: #CED2D9; }
+  .address ion-content .address-item.unavailable .part1 .address {
+    color: #CED2D9; }
+  .address ion-content .address-item .part1 {
+    height: 70px;
+    border-bottom: 1px solid #e8ecf2; }
+    .address ion-content .address-item .part1 .name-phone {
+      padding-top: 9px;
+      padding-bottom: 10px;
+      font-size: 14px;
+      margin-left: 5px;
+      color: #000;
+      display: -webkit-box;
+      -webkit-box-align: center; }
+      .address ion-content .address-item .part1 .name-phone .name {
+        width: 100px;
+        display: inline-block; }
+      .address ion-content .address-item .part1 .name-phone .phone {
+        -webkit-box-flex: 1; }
+    .address ion-content .address-item .part1 .address {
+      color: #666;
+      font-size: 12px;
+      padding-bottom: 15px;
+      margin-left: 5px; }
+  .address ion-content .address-item .part2 {
+    height: 40px;
+    display: -webkit-box;
+    -webkit-box-align: center;
+    color: #ced2d9;
+    font-size: 12px; }
+    .address ion-content .address-item .part2 .default {
+      display: -webkit-box;
+      -webkit-box-align: center; }
+      .address ion-content .address-item .part2 .default .checkbox {
+        vertical-align: bottom;
+        padding: 0;
+        margin-right: 6px; }
+        .address ion-content .address-item .part2 .default .checkbox input:checked:before {
+          background: #fad20a;
+          border-color: #fad20a; }
+      .address ion-content .address-item .part2 .default span {
+        line-height: 28px; }
+    .address ion-content .address-item .part2 .edit {
+      -webkit-box-flex: 1;
+      text-align: right;
+      margin-right: 10px; }
+      .address ion-content .address-item .part2 .edit .icon-edit {
+        display: inline-block;
+        background-image: url(../img/my/icon_edit.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 21px;
+        height: 21px;
+        vertical-align: bottom; }
+
+.address ion-content .address-empty {
+  padding-top: 100px;
+  text-align: center; }
+  .address ion-content .address-empty img {
+    margin: 0 auto;
+    width: 120px; }
+  .address ion-content .address-empty .tips {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    color: #666;
+    font-size: 12px; }
+
+.editAddress .btn-right {
+  line-height: 34px;
+  position: absolute;
+  right: 10px;
+  color: #a35a1f !important;
+  font-size: 12px; }
+
+.editAddress ion-content .form-item {
+  height: 50px;
+  border-bottom: 1px solid #e8ecf2;
+  display: -webkit-box;
+  -webkit-box-align: center;
+  background-color: #fff;
+  font-size: 16px;
+  color: #333;
+  padding: 6px 0 5px 16px; }
+  .editAddress ion-content .form-item .right {
+    -webkit-box-flex: 1;
+    padding-right: 10px;
+    display: -webkit-box;
+    -webkit-box-pack: end; }
+    .editAddress ion-content .form-item .right .checkbox {
+      display: -webkit-box;
+      -webkit-box-align: center; }
+      .editAddress ion-content .form-item .right .checkbox input:checked:before {
+        background: #fad20a;
+        border-color: #fad20a; }
+      .editAddress ion-content .form-item .right .checkbox span {
+        display: block;
+        margin-left: 9px; }
+
+.editAddress ion-content input {
+  text-align: right; }

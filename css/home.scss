@@ -1,0 +1,237 @@
+.home{
+  ion-header-bar {
+    .title {
+      .container {
+        position: relative;
+        &.icon {
+          display: inline-block;
+          height: 44px;
+          background-image: url(../img/icon.png);
+          background-size: 20px;
+          background-repeat: no-repeat;
+          background-position-y: center;
+        }
+        .storeName {
+          margin-left: 25px;
+        }
+        .ion-ios-arrow-right {
+          margin-left: 5px;
+        }
+      }
+    }
+  }
+  ion-content{
+    .frame{
+      width: 100%;
+      .frame1{/*1*1布局*/
+        .modelInfo{
+          .model1{
+            img{
+              width: 100%;
+              vertical-align: bottom;
+            }
+          }
+          .model2{
+            img{
+              width: 100%;
+              vertical-align: bottom;
+            }
+          }
+          .model6{
+            display: -webkit-box;
+            font-size: 12px;
+            background-color: #FFF;
+            border: 1px solid #E3E7ED;
+            height: 40px;
+            -webkit-box-align: center;
+            background-image: url(../img/home/arrow.png);
+            background-position: right center;
+            background-size: 10px;
+            background-repeat: no-repeat;
+            padding-right: 15px;
+            background-origin: content-box;
+            .title{
+              margin-left: 10px;
+              border: 1px solid #F43E1F;
+              border-radius: 6px;
+              color: #F63F1D;
+              width: 60px;
+              text-align: center;
+            }
+            .orderNumber{
+              margin: 0 10px;
+              color: #F63F1D;
+              font-size: 22px;
+              font-weight: bold;
+            }
+            .address{
+              color: #333;
+            }
+            .coupons{
+              margin: 0 10px;
+              color: #333;
+              .couponsNumber{
+                color: #F63F1D;
+                font-size: 22px;
+                font-weight: bold;
+              }
+            }
+          }
+        }
+      }
+      .frame2{/*1*2布局*/
+        display: -webkit-box;
+        .modelInfo{
+          -webkit-box-flex: 1;
+          width: 50%;
+          .model2,.model3{
+            img{
+              width: 100%;
+              vertical-align: bottom;
+            }
+          }
+        }
+      }
+      .frame3{/*1*3布局*/
+        display: -webkit-box;
+        .modelInfo{
+          -webkit-box-flex: 1;
+          width: 33.333%;
+          .model2,.model4{
+            img{
+              width: 100%;
+              vertical-align: bottom;
+            }
+          }
+        }
+      }
+      .frame4{/*1*4布局*/
+        display: -webkit-box;
+        .modelInfo{
+          -webkit-box-flex: 1;
+          width: 25%;
+          .model2,.model4{
+            img{
+              width: 100%;
+              vertical-align: bottom;
+            }
+          }
+        }
+      }
+      .frame5{
+        display: -webkit-box;
+        -webkit-box-align: stretch;
+        .frame-left{
+          width: 40%;
+          .modelInfo{
+            .model2,.model3,.model4{
+              img{
+                width: 100%;
+                vertical-align: bottom;
+              }
+            }
+          }
+        }
+        .frame-right{
+          width: 60%;
+          //background-color: #009684;
+          .modelInfo{
+            height: 50%;
+            .model2,.model3,.model4{
+              img{
+                width: 100%;
+                vertical-align: bottom;
+              }
+            }
+          }
+        }
+      }
+    }
+    //.slider{
+    //  a{
+    //    width: 100%;
+    //    max-height: 300px;
+    //    display: inline-block;
+    //    img{
+    //      width: 100%;
+    //      max-height: 300px;
+    //      vertical-align: bottom;
+    //    }
+    //  }
+    //}
+    //.theme{
+    //  height: 110px;
+    //  display: -webkit-box;
+    //  background-color: #ffffff;
+    //  .theme-item{
+    //    -webkit-box-flex: 1;
+    //    height: 100%;
+    //    display: -webkit-box;
+    //    -webkit-box-orient: vertical;
+    //    -webkit-box-pack: center;
+    //    -webkit-box-align: center;
+    //    a{
+    //      text-decoration: inherit;
+    //      img{
+    //        width: 50px;
+    //        vertical-align: bottom;
+    //        margin-bottom: 9px;
+    //        -webkit-box-flex: 1;
+    //      }
+    //      .theme-name{
+    //        font-size: 12px;
+    //        color: #666666;
+    //      }
+    //    }
+    //  }
+    //}
+    //.model{
+    //  margin-top: 5px;
+    //  background-color: #ffffff;
+    //  .model-title{
+    //    height: 35px;
+    //    line-height: 35px;
+    //    font-size: 12px;
+    //    color: #000000;
+    //    position: relative;
+    //    &:before{
+    //      width: 10px;
+    //      content: " ";
+    //      border-left: 4px solid #fad20a;
+    //      display: block;
+    //      height: 20px;
+    //      position: absolute;
+    //      top: 8px;
+    //    }
+    //    span{
+    //      margin-left: 15px;
+    //    }
+    //  }
+    //  .model-content{
+    //    width: 100%;
+    //    .model-item{
+    //      width: 50%;
+    //      display: inline-block;
+    //      background-color: #ffffff;
+    //      border-right: 1px solid #eef3f7;
+    //      border-top: 1px solid #eef3f7;
+    //      border-bottom: 1px solid #eef3f7;
+    //      img{
+    //        width: 100%;
+    //        vertical-align: bottom;
+    //      }
+    //      &:nth-child(odd){
+    //        &:not(:nth-child(1)){
+    //          border-top: 0;
+    //        }
+    //      }
+    //      &:nth-child(even){
+    //        &:not(:nth-child(2)){
+    //          border-top: 0;
+    //        }
+    //      }
+    //    }
+    //  }
+    //}
+  }
+}

@@ -1,0 +1,215 @@
+//.itemList{
+//  ion-header-bar {
+//    .title{
+//      .container{
+//        position: relative;
+//        font-size: 17px;
+//        &.icon{
+//          display: inline-block;
+//          height: 44px;
+//          background-image: url(../img/icon.png);
+//          background-size: 20px;
+//          background-repeat: no-repeat;
+//          background-position-y: center;
+//        }
+//        .storeName{
+//          margin-left: 25px;
+//        }
+//        .ion-ios-arrow-right{
+//          margin-left: 5px;
+//        }
+//      }
+//    }
+//  }
+//  ion-content{
+//    display: -webkit-box;
+//    .subList {
+//      width: 70px;
+//      background-color: #f2f5fa;
+//      text-align: center;
+//      border-right: 1px solid #e0e5ec;
+//      border-top: 0;
+//      .item {
+//        font-size: 14px;
+//        color: #000000;
+//        padding: 0;
+//        background-color: #f2f5fa;
+//        border-color: #e0e5ec;
+//        border-left: 0;
+//        border-right: 0;
+//        height: 40px;
+//        line-height: 40px;
+//        margin-left: 0;
+//        margin-right: 0;
+//        position: relative;
+//        &:first-child{
+//          border-top: 0;
+//        }
+//        &.active {
+//          background-color: #ffffff;
+//          margin-right: -1px;
+//        }
+//        &.active:after{
+//          content: " ";
+//          border-left: 2px solid #f9d209;
+//          display: block;
+//          height: 24px;
+//          width: 10px;
+//          position: absolute;
+//          top: 8px;
+//          left: 0;
+//        }
+//        .xs-badge{
+//          position: absolute;
+//          top: 5px;
+//          right: 5px;
+//          text-align: right;
+//        }
+//      }
+//    }
+//    .mainContent{
+//      -webkit-box-flex: 1;
+//      position: relative;
+//      ion-scroll {
+//        position: absolute;
+//        //height: 100%;
+//        width: 100%;
+//        bottom: 50px;
+//        top:0;
+//      }
+//    }
+//    .xs-item1.item-divider{
+//      padding: 0 9px;
+//      color: #333333;
+//      font-size: 12px;
+//      height: 30px;
+//      line-height: 30px;
+//    }
+//  }
+//
+//  .list .xs-item1 {
+//    width: 100% !important;
+//    height: 90px;
+//    padding: 10px 10px 10px 5px;
+//    img{
+//      height: 70px;
+//      width: 70px;
+//    }
+//    .desc{
+//      .title{
+//        margin: 0px 0px 2px 0px;
+//      }
+//      //i[class^="icon"]{
+//      //  width: 10px;
+//      //  height: 10px;
+//      //}
+//    }
+//  }
+//}
+.itemList{
+  ion-header-bar {
+    .title{
+      .container{
+        position: relative;
+        &.icon{
+          display: inline-block;
+          height: 44px;
+          background-image: url(../img/icon.png);
+          background-size: 20px;
+          background-repeat: no-repeat;
+          background-position-y: center;
+        }
+        .storeName{
+          margin-left: 25px;
+        }
+        .ion-ios-arrow-right{
+          margin-left: 5px;
+        }
+      }
+    }
+  }
+  .subList {
+    width: 70px;
+    background-color: #f2f5fa;
+    text-align: center;
+    border-right: 1px solid #e0e5ec;
+    border-top: 0;
+    position: absolute;
+    top:44px;
+    height: 100%;
+    z-index: 1;
+    .item {
+      font-size: 14px;
+      color: #000000;
+      padding: 0;
+      background-color: #f2f5fa;
+      border-color: #e0e5ec;
+      border-left: 0;
+      border-right: 0;
+      height: 40px;
+      line-height: 40px;
+      margin-left: 0;
+      margin-right: 0;
+      position: relative;
+      &:first-child{
+        border-top: 0;
+      }
+      &.active {
+        background-color: #ffffff;
+        margin-right: -1px;
+      }
+      &.active:after{
+        content: " ";
+        border-left: 2px solid #f9d209;
+        display: block;
+        height: 24px;
+        width: 10px;
+        position: absolute;
+        top: 8px;
+        left: 0;
+      }
+      .xs-badge{
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        text-align: right;
+      }
+    }
+  }
+  ion-content{
+    bottom: 50px;
+    background-color: #ffffff;
+    .mainContent{
+      display: -webkit-box;
+      .left{
+        width: 70px;
+      }
+      .list-content{
+        -webkit-box-flex: 1;
+      }
+      .xs-item1.item-divider{
+        padding: 0 9px;
+        color: #333333;
+        font-size: 12px;
+        height: 30px;
+        line-height: 30px;
+        background-color: #f5f5f5;
+      }
+    }
+  }
+
+  .list .xs-item1 {
+    width: 100% !important;
+    height: 90px;
+    padding: 10px 10px 10px 5px;
+    img{
+      height: 70px;
+      width: 70px;
+    }
+    .desc{
+      .title{
+        margin: 0 0 2px 0;
+      }
+    }
+  }
+}

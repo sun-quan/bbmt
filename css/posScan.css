@@ -1,0 +1,15 @@
+.posScan ion-content .store-name {
+  text-align: center;
+  margin-top: 100px; }
+
+.posScan ion-content .orderNumber {
+  margin-top: 30px;
+  width: 100%; }
+  .posScan ion-content .orderNumber input {
+    width: 200px;
+    margin: 0 auto;
+    border-radius: 20px;
+    border: 1px solid #ddd;
+    padding-left: 20px; }
+  .posScan ion-content .orderNumber .xs-btn {
+    margin-top: 30px; }

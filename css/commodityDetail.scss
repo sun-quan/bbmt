@@ -1,0 +1,43 @@
+.commodityDetail{
+  ion-content{
+    background-color: #fff;
+    bottom:50px;
+    .bigImg{
+      width: 100%;
+      img{
+        width: 100%;
+        vertical-align: bottom;
+      }
+    }
+    .desc{
+      margin: 20px 15px;
+      height: 100px;
+      .bottom{
+        position: inherit;
+      }
+      .commodityDes{
+        font-size: 14px;
+        color: #676767;
+        line-height: 22px;
+        margin-top: 5px;
+      }
+    }
+    .split-line{
+      height: 5px;
+      background-color: #f3f5f7;
+    }
+    .commodityContent{
+      width: 100%;
+      min-height: 300px;
+      img{
+        vertical-align: bottom;
+        min-height: 60px;
+        width: 100%;
+      }
+    }
+    .empty{
+      text-align: center;
+      padding-top: 200px;
+    }
+  }
+}

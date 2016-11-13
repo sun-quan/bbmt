@@ -1,0 +1,23 @@
+.activity{
+  ion-content{
+    .frame{
+      width: 100%;
+      .frame1{/*1*1布局*/
+        .modelInfo{
+          .model1{
+            img{
+              width: 100%;
+              vertical-align: bottom;
+            }
+          }
+          .model2{
+            img{
+              width: 100%;
+              vertical-align: bottom;
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,158 @@
+.store .bar-energized .search {
+  width: 100%;
+  margin: 0 5px; }
+  .store .bar-energized .search input {
+    border-radius: 20px;
+    border: 1px solid #ddd;
+    width: -webkit-calc(100% - 80px);
+    margin: 0 auto;
+    padding: 0;
+    padding-left: 40px;
+    height: 32px;
+    max-height: 32px;
+    line-height: 32px;
+    background-image: url(../img/home/icon-search.png);
+    background-repeat: no-repeat;
+    background-position-y: center;
+    background-position-x: 12px;
+    background-size: 18px; }
+
+.store ion-content {
+  background-color: #fff;
+  display: -webkit-box;
+  -webkit-box-orient: vertical; }
+  .store ion-content .nearby .title {
+    height: 30px;
+    line-height: 30px;
+    background-color: #F3F6F8;
+    padding-left: 15px;
+    border: 1px solid #DFE6EC; }
+  .store ion-content .nearby .content {
+    display: -webkit-box; }
+    .store ion-content .nearby .content .storeList {
+      width: 100%; }
+      .store ion-content .nearby .content .storeList li {
+        border-bottom: 1px #e8ecf2 solid;
+        height: 60px;
+        display: -webkit-box;
+        -webkit-box-align: center; }
+        .store ion-content .nearby .content .storeList li.active {
+          background-color: #D9D9D9; }
+        .store ion-content .nearby .content .storeList li .store-content {
+          padding: 0 10px 0 15px;
+          width: 100%;
+          position: relative; }
+          .store ion-content .nearby .content .storeList li .store-content .name {
+            font-size: 14px;
+            color: #333; }
+          .store ion-content .nearby .content .storeList li .store-content .address {
+            font-size: 12px;
+            color: #999; }
+          .store ion-content .nearby .content .storeList li .store-content .distance {
+            position: absolute;
+            top: 15px;
+            right: 10px;
+            display: -webkit-box;
+            -webkit-box-align: center; }
+            .store ion-content .nearby .content .storeList li .store-content .distance .ion-point {
+              display: block;
+              background-image: url(../img/store/icon-point.png);
+              background-size: cover;
+              width: 14px;
+              height: 14px;
+              background-repeat: no-repeat;
+              background-position: center; }
+  .store ion-content .all-store {
+    height: 100%;
+    -webkit-box-flex: 1;
+    display: -webkit-box;
+    -webkit-box-orient: vertical; }
+    .store ion-content .all-store .title {
+      height: 30px;
+      line-height: 30px;
+      background-color: #F3F6F8;
+      padding-left: 15px;
+      border: 1px solid #DFE6EC;
+      border-top: 0; }
+    .store ion-content .all-store .content {
+      display: -webkit-box;
+      -webkit-box-flex: 1; }
+      .store ion-content .all-store .content .subList {
+        width: 70px;
+        background-color: #f2f5fa;
+        text-align: center;
+        border-right: 1px solid #e0e5ec;
+        border-top: 0;
+        position: relative; }
+        .store ion-content .all-store .content .subList ion-scroll {
+          position: absolute;
+          left: 0;
+          top: 0;
+          height: 100%;
+          width: 100%;
+          overflow-y: hidden; }
+          .store ion-content .all-store .content .subList ion-scroll ul {
+            padding-top: 1px; }
+            .store ion-content .all-store .content .subList ion-scroll ul li {
+              font-size: 14px;
+              color: #000000;
+              padding: 0;
+              background-color: #f2f5fa;
+              border-color: #DFE6EC;
+              border-left: 0;
+              border-right: 0;
+              border-top: 0;
+              height: 40px;
+              line-height: 40px;
+              margin: 0;
+              position: relative; }
+              .store ion-content .all-store .content .subList ion-scroll ul li.active {
+                background-color: #ffffff;
+                margin-right: -1px; }
+              .store ion-content .all-store .content .subList ion-scroll ul li.active:after {
+                content: " ";
+                border-left: 2px solid #f9d209;
+                display: block;
+                height: 24px;
+                width: 10px;
+                position: absolute;
+                top: 8px;
+                left: 0; }
+              .store ion-content .all-store .content .subList ion-scroll ul li .xs-badge {
+                position: absolute;
+                top: 5px;
+                right: 5px;
+                text-align: right; }
+                .store ion-content .all-store .content .subList ion-scroll ul li .xs-badge span {
+                  background-color: #f9d209; }
+          .store ion-content .all-store .content .subList ion-scroll .scroll-bar {
+            display: none; }
+      .store ion-content .all-store .content .storeList {
+        -webkit-box-flex: 1;
+        position: relative; }
+        .store ion-content .all-store .content .storeList ion-scroll {
+          position: absolute;
+          left: 0;
+          top: 0;
+          height: 100%;
+          width: 100%;
+          overflow-y: hidden; }
+          .store ion-content .all-store .content .storeList ion-scroll ul li {
+            border-bottom: 1px #e8ecf2 solid;
+            height: 60px;
+            display: -webkit-box;
+            -webkit-box-align: center; }
+            .store ion-content .all-store .content .storeList ion-scroll ul li.active {
+              background-color: #D9D9D9; }
+            .store ion-content .all-store .content .storeList ion-scroll ul li:first-child {
+              border-top: 1px #e8ecf2 solid; }
+            .store ion-content .all-store .content .storeList ion-scroll ul li .store-content {
+              padding: 0 10px 0 15px;
+              width: 100%;
+              position: relative; }
+              .store ion-content .all-store .content .storeList ion-scroll ul li .store-content .name {
+                font-size: 14px;
+                color: #333; }
+              .store ion-content .all-store .content .storeList ion-scroll ul li .store-content .address {
+                font-size: 12px;
+                color: #999; }

@@ -1,0 +1,226 @@
+.store{
+  .bar-energized{
+    .search{
+      width: 100%;
+      margin: 0 5px;
+      input{
+        border-radius: 20px;
+        border: 1px solid #ddd;
+        width: -webkit-calc(100% - 80px);
+        margin: 0 auto;
+        padding: 0;
+        padding-left: 40px;
+        height: 32px;
+        max-height: 32px;
+        line-height: 32px;
+        background-image: url(../img/home/icon-search.png);
+        background-repeat: no-repeat;
+        background-position-y: center;
+        background-position-x: 12px;
+        background-size: 18px;
+      }
+    }
+  }
+  ion-content{
+    background-color: #fff;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    .nearby{
+      .title{
+        height: 30px;
+        line-height: 30px;
+        background-color: #F3F6F8;
+        padding-left: 15px;
+        border: 1px solid #DFE6EC;
+      }
+      .content{
+        display: -webkit-box;
+        .storeList{
+          width: 100%;
+          li{
+            border-bottom: 1px #e8ecf2 solid;
+            height: 60px;
+            display: -webkit-box;
+            -webkit-box-align: center;
+            &.active{
+              background-color: #D9D9D9;
+            }
+            .store-content{
+              padding: 0 10px 0 15px;
+              width: 100%;
+              position: relative;
+              .name{
+                font-size: 14px;
+                color: #333;
+              }
+              .address{
+                font-size: 12px;
+                color: #999;
+              }
+              .distance{
+                position: absolute;
+                top: 15px;
+                right: 10px;
+                display: -webkit-box;
+                -webkit-box-align: center;
+                .ion-point{
+                  display: block;
+                  background-image: url(../img/store/icon-point.png);
+                  background-size: cover;
+                  width: 14px;
+                  height: 14px;
+                  background-repeat: no-repeat;
+                  background-position: center;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    .all-store{
+      height: 100%;
+      -webkit-box-flex:1;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      .title{
+        height: 30px;
+        line-height: 30px;
+        background-color: #F3F6F8;
+        padding-left: 15px;
+        border: 1px solid #DFE6EC;
+        border-top: 0;
+      }
+      .content{
+        display: -webkit-box;
+        -webkit-box-flex:1;
+        .subList {
+          width: 70px;
+          background-color: #f2f5fa;
+          text-align: center;
+          border-right: 1px solid #e0e5ec;
+          border-top: 0;
+          position: relative;
+          ion-scroll{
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 100%;
+            overflow-y: hidden;
+            ul{
+              padding-top: 1px;
+              li {
+                font-size: 14px;
+                color: #000000;
+                padding: 0;
+                background-color: #f2f5fa;
+                border-color: #DFE6EC;
+                border-left: 0;
+                border-right: 0;
+                border-top: 0;
+                height: 40px;
+                line-height: 40px;
+                margin: 0;
+                position: relative;
+                &.active {
+                  background-color: #ffffff;
+                  margin-right: -1px;
+                }
+                &.active:after {
+                  content: " ";
+                  border-left: 2px solid #f9d209;
+                  display: block;
+                  height: 24px;
+                  width: 10px;
+                  position: absolute;
+                  top: 8px;
+                  left: 0;
+                }
+                .xs-badge {
+                  position: absolute;
+                  top: 5px;
+                  right: 5px;
+                  text-align: right;
+                  span{
+                    background-color: #f9d209;
+                  }
+                }
+              }
+            }
+            .scroll-bar{
+              display: none;
+            }
+          }
+        }
+        .storeList {
+          -webkit-box-flex: 1;
+          position: relative;
+          ion-scroll {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 100%;
+            overflow-y: hidden;
+            ul {
+              li {
+                border-bottom: 1px #e8ecf2 solid;
+                height: 60px;
+                display: -webkit-box;
+                -webkit-box-align: center;
+                &.active {
+                  background-color: #D9D9D9;
+                }
+                &:first-child {
+                  border-top: 1px #e8ecf2 solid;;
+                }
+                .store-content {
+                  padding: 0 10px 0 15px;
+                  width: 100%;
+                  position: relative;
+                  .name {
+                    font-size: 14px;
+                    color: #333;
+                  }
+                  .address {
+                    font-size: 12px;
+                    color: #999;
+                  }
+                }
+              }
+            }
+          }
+        }
+        //.storeList{
+        //  -webkit-box-flex: 1;
+        //  li{
+        //    border-bottom: 1px #e8ecf2 solid;
+        //    height: 60px;
+        //    display: -webkit-box;
+        //    -webkit-box-align: center;
+        //    &.active{
+        //      background-color: #D9D9D9;
+        //    }
+        //    &:first-child{
+        //      border-top: 1px #e8ecf2 solid;;
+        //    }
+        //    .store-content{
+        //      padding: 0 10px 0 15px;
+        //      width: 100%;
+        //      position: relative;
+        //      .name{
+        //        font-size: 14px;
+        //        color: #333;
+        //      }
+        //      .address{
+        //        font-size: 12px;
+        //        color: #999;
+        //      }
+        //    }
+        //  }
+        //}
+      }
+    }
+  }
+}

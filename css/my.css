@@ -1,0 +1,85 @@
+.my ion-content .background {
+  background-image: url(../img/my/background.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 200px;
+  display: -webkit-box;
+  -webkit-box-pack: center;
+  -webkit-box-align: center; }
+  .my ion-content .background .headImg .userName {
+    text-align: center; }
+
+.my ion-content .item.item-divider {
+  padding: 0 15px 0 10px;
+  background-color: #ffffff;
+  border-color: #e4eef4;
+  border-top-width: 0;
+  overflow: inherit;
+  height: 40px;
+  line-height: 40px;
+  font-size: 14px;
+  background-image: url(../img/arrow.png);
+  background-repeat: no-repeat;
+  background-position: 100% 50%;
+  background-origin: content-box;
+  background-size: 21px; }
+  .my ion-content .item.item-divider.title {
+    color: #333333;
+    margin-top: 0;
+    margin-bottom: 0; }
+    .my ion-content .item.item-divider.title .icon-coupons {
+      background-image: url(../img/my/icon-coupons.png); }
+    .my ion-content .item.item-divider.title .icon-address {
+      background-image: url(../img/my/icon-address.png); }
+    .my ion-content .item.item-divider.title .icon-tel {
+      background-image: url(../img/my/icon-tel.png); }
+    .my ion-content .item.item-divider.title .icon-faq {
+      background-image: url(../img/my/icon-faq.png); }
+    .my ion-content .item.item-divider.title i[class^=icon] {
+      margin-right: 10px;
+      display: inline-block;
+      width: 30px;
+      height: 40px;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain; }
+      .my ion-content .item.item-divider.title i[class^=icon] span {
+        margin-left: 40px; }
+    .my ion-content .item.item-divider.title.tel {
+      display: -webkit-box; }
+      .my ion-content .item.item-divider.title.tel a {
+        -webkit-box-flex: 1;
+        display: block;
+        text-align: right;
+        margin-right: 30px;
+        text-decoration: none;
+        color: #e65a16; }
+    .my ion-content .item.item-divider.title:before {
+      width: 35px; }
+  .my ion-content .item.item-divider:before {
+    width: 10px;
+    content: " ";
+    border-bottom: 2px solid #fff;
+    display: block;
+    height: 5px;
+    position: absolute;
+    bottom: -1px;
+    left: 0; }
+  .my ion-content .item.item-divider + .my-content {
+    background-color: #ffffff;
+    display: -webkit-box;
+    -webkit-box-pack: center;
+    -webkit-box-align: center;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    margin-bottom: 10px; }
+    .my ion-content .item.item-divider + .my-content .orderType {
+      -webkit-box-flex: 1;
+      text-align: center; }
+      .my ion-content .item.item-divider + .my-content .orderType img {
+        width: 36px;
+        vertical-align: bottom; }
+      .my ion-content .item.item-divider + .my-content .orderType div[class^=Type] {
+        font-size: 9px; }

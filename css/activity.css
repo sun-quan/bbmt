@@ -1,0 +1,11 @@
+@charset "UTF-8";
+.activity ion-content .frame {
+  width: 100%; }
+  .activity ion-content .frame .frame1 {
+    /*1*1布局*/ }
+    .activity ion-content .frame .frame1 .modelInfo .model1 img {
+      width: 100%;
+      vertical-align: bottom; }
+    .activity ion-content .frame .frame1 .modelInfo .model2 img {
+      width: 100%;
+      vertical-align: bottom; }
