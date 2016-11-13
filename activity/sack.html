@@ -1,0 +1,21 @@
+
+<div class=" pic1" ><img src="activity/img/oldimgs/20.jpg"></div>
+<div class=" pic2">
+    <img src="activity/img/oldimgs/21.jpg">
+    <form  name="myForm" class="s_form" ng-submit="showAlert()">
+       <div ng-show="!enrollstate">
+            <input type="number" class="tel" name="telephone" placeholder="请输入手机号,测人品" minlength="11" maxlength="11" ng-model="phone"  pattern="1[0-9]{10}" required>
+            <span style="color:red" ng-show="myForm.telephone.$touched ">
+                <span ng-if="myForm.telephone.$error.pattern">请输入正确的手机号</span>
+            </span>
+        </div> 
+        <button class="s_btn1" id="s_btn1" type="submit"></button>
+    </form>
+    <div class="lt-modal" ng-if="ltModal.show"><!-- ng-if="ltModal.show" -->
+    <div class="modal-in" ng-class="{1:'chihuo',2:'shishen',3:'taotie',4:'kongdai'}[fudai]">
+        <h4 ng-bind="ltModal.title" ng-class="{true:'opacity0',false:'opacity1'}[hide]"></h4>
+        <button ng-click="ltModal.ok()" ng-bind="ltModal.button"></button>
+        <p ng-bind="ltModal.time"></p>
+    </div>
+</div>
+</div>

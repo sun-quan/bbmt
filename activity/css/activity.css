@@ -1,0 +1,162 @@
+            body,div,p { margin: 0; padding: 0;}                    
+            ul { list-style: none;}
+            html { overflow: hidden;}
+            body { width: 100%;  *cursor: default;
+            overflow: hidden; font: 16px/1.5 Arial, Helvetica, STHeiti STXihei, Microsoft JhengHei;height: 100%;position: absolute;}
+            img{display: block;width: 100%;min-height: 100%}
+            .pic1,.pic2{
+                    height:100%;
+                    width:100%;
+                    position: absolute;
+                    top:0;
+                    left:0;
+                    /*opacity: 1;*/
+                }
+                .pic1{
+                    opacity: 1;
+                -webkit-animation:fadeOut 3s ease-in-out 1s forwards;
+                }
+                .pic2{
+/*                position: absolute;
+                height:100%;
+                width: 100%;*/
+                opacity: 0;
+/*                top: 0;
+                    left: 0;*/
+                    /*z-index: 1;*/
+                -webkit-animation:fadeIn 1s ease-in-out 3s forwards;
+                }
+            @-webkit-keyframes fadeOut{
+                0%{ opacity: 1;z-index: 2;}
+                50%{opacity:.5;z-index: 2;}
+                100%{opacity:0;z-index: 1;}
+            }
+            @-webkit-keyframes fadeIn{
+                0%{opacity: 0;z-index: 1;}
+                100%{opacity: 1;z-index: 20;display: block;}
+            }
+            .s_form{
+            position: absolute;
+            width: 250px;
+            top: 0;
+            left:50%;
+            height:100%;
+         -webkit-transform: translate(-50%,33%);            }
+            .tel{
+            padding-left: 15px !important;
+            outline: 0;
+            height: 50px !important;
+            background-color: #fff;
+            z-index: 2;
+/*            border: 2px solid #20a1d3;*/
+            border-radius:1px;
+            -webkit-box-shadow:0 0 35px 10px #fff;
+            -moz-box-shadow:0 0 35px 10px #fff;
+            box-shadow:0 0 35px 10px #fff;
+            font-weight: 400;
+            width: 100%;
+            box-sizing: border-box;
+            }
+            .tel:focus{
+            outline: 0;
+            }
+            .s_btn1{
+            height: 80px;
+            width: 200px;
+            color: #444;
+            outline: 0;
+            border: 0;
+            display: block;
+            margin: 0 auto;
+            font-size: 16px;
+            line-height: 30px;
+            background: url(../img/oldimgs/button_s1.png) no-repeat;
+            background-size: 100% 100%;
+            }
+
+            /*移除HTML5 input在type="number"时的上下小箭头*/
+            input::-webkit-outer-spin-button,
+            input::-webkit-inner-spin-button {
+            -webkit-appearance: none !important;
+            margin: 0;
+                    }
+            input[type="number"]{-moz-appearance:textfield;}           
+
+            /*placeholder水平居中*/
+            input::-ms-input-placeholder{text-align: center;}
+            input::-webkit-input-placeholder{text-align: center;}
+
+            .lt-modal{
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background-color: rgba(0,0,0,.5);
+            z-index: 99;
+            }
+            .modal-in{
+            border-radius:15px;
+            /*background-color: #fff;*/
+            position: absolute;
+            top: 35%;
+            width: 100%;
+            left: 50%;
+            transform:translate(-50%,-50%);
+            -webkit-transform:translate(-50%,-50%);
+            font-size: 18px;
+            text-align: center;
+            /*background: url(img/activity/alert1.png) no-repeat;*/            
+            background-clip: border-box;
+            padding-top: 31%;
+            padding-bottom: 5%;
+            }
+            .chihuo{
+                background: url(../img/oldimgs/alert1.png) no-repeat;
+                background-size: 100% 100%;
+            }
+            .shishen{
+                background: url(../img/oldimgs/alert2.png) no-repeat;
+                background-size: 100% 100%;
+            }
+            .taotie{
+                background: url(../img/oldimgs/alert3.png) no-repeat;
+                background-size: 100% 100%;
+            }
+            .kongdai{
+                background: url(../img/oldimgs/alert4.png) no-repeat;
+                background-size: 100% 100%;
+            }
+            .modal-in h4{
+            color: #f9d301;
+            margin-bottom: 10px;
+            margin-top: 35px;
+            }
+            .modal-in p{
+                font-size: 12px;
+                color: #000;
+                font-weight: normal;
+                margin-bottom: 5%;
+                line-height: 30px;
+            }
+            .modal-in button{
+            height: 50px;
+            width: 165px;
+            background-color: #f9d301;
+            color: #444;
+            outline: 0;
+            border-radius: 21px;
+            border: 0;
+            display: block;
+            margin: 4% auto;
+            font-size: 16px;
+            line-height: 30px;
+            font-weight: 500;
+            }
+            .opacity0{
+            opacity:0;
+            margin-top: 70px !important;
+            }
+            .opacity1{
+                opacity: 1;
+            }
