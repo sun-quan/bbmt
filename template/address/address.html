@@ -1,0 +1,87 @@
+<ion-view class="address">
+    <ion-header-bar class="bar-energized">
+        <a class="btn-back" ng-click="go(-1)"></a>
+        <div class="title">地址管理</div>
+        <a class="btn-right" ng-click="openUserAddressModal()">新增</a>
+    </ion-header-bar>
+    <ion-content overflow-scroll="false">
+        <div class="address-item" ng-class="{'unavailable':from == 'pay' && !item.isAvailable}" ng-repeat="item in addressList | orderBy: 'isAvailable'" ng-if="addressList.length > 0" on-hold="deleteAddress(item)">
+            <div class="part1" ng-click="useUserAddress(item)">
+                <div class="name-phone">
+                    <div class="name" ng-bind="item.consignee"></div>
+                    <div class="phone" ng-bind="item.phone"></div>
+                </div>
+                <div class="address" ng-bind="item.area + item.address">
+                </div>
+            </div>
+            <div class="part2">
+                <div class="default">
+                    <label class="checkbox">
+                        <input type="radio" ng-model="item.isDefault" ng-change="setUserDefaultAddress(item)" value="1" name="address">
+                    </label>
+                    <span>默认地址</span>
+                </div>
+                <div class="edit" ng-click="openUserAddressModal(item)">
+                    <i class="icon-edit"></i>
+                    <span>编辑</span>
+                </div>
+            </div>
+        </div>
+        <div class="address-empty" ng-if="addressList.length == 0">
+            <img ng-src="img/my/icon_address.png">
+            <div class="tips">您还未添加配送地址,赶快新增一个吧!</div>
+            <a class="xs-btn" ng-click="openUserAddressModal()">新增地址</a>
+        </div>
+    </ion-content>
+</ion-view>
+<script id="userAddress.html" type="text/ng-template">
+    <ion-modal-view class="editAddress">
+        <ion-header-bar class="bar-energized">
+            <a class="btn-back" ng-click="closeUserAddressModal()"></a>
+            <div class="title">{{currUserAddress.addressId ? '编辑':'新增'}}地址</div>
+            <a class="btn-right" ng-click="saveUserAddress()">保存</a>
+        </ion-header-bar>
+        <ion-content overflow-scroll="false">
+            <div>
+                <label class="item item-input">
+                    <div class="input-label">
+                        收货人姓名
+                    </div>
+                    <input type="text" ng-model="currUserAddress.consignee" maxlength="6"/>
+                </label>
+                <div class="form-item">
+                    <span>性别</span>
+                    <div class="right">
+                        <label class="checkbox">
+                            <input type="radio" name="sex" value="1" ng-model="currUserAddress.sex">
+                            <span>先生</span>
+                        </label>
+                        <label class="checkbox">
+                            <input type="radio" name="sex" value="2" ng-model="currUserAddress.sex">
+                            <span>女士</span>
+                        </label>
+                    </div>
+                </div>
+                <label class="item item-input item-select">
+                    <div class="input-label">
+                        收货地址
+                    </div>
+                    <select ng-options="address.addressId as address.area for address in storeDistributionAddressList" ng-model="currUserAddress.storeAddressId">
+                    </select>
+                </label>
+                <label class="item item-input">
+                    <div class="input-label">
+                        门牌号
+                    </div>
+                    <input type="text" ng-model="currUserAddress.address" placeholder="请输入门牌号等详细信息" maxlength="15"/>
+                </label>
+                <label class="item item-input">
+                    <div class="input-label">
+                        手机号码
+                    </div>
+                    <input type="tel" ng-model="currUserAddress.phone" placeholder="配送员联系您的电话" maxlength="11"/>
+                </label>
+            </div>
+        </ion-content>
+    </ion-modal-view>
+</script>

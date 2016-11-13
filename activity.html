@@ -1,0 +1,352 @@
+
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="initial-scale=1,maximum-scale=1,user-scalable=no,width=device-width,height=device-height"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <script type="text/javascript" src="http://lib.xs1h.com/angular/v1.3.13/angular.min.js"></script>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <style type="text/css">
+        body,  div,  p { margin: 0; padding: 0;}
+        body { width: 100%;  *cursor: default;
+            font: 16px/1.5 Arial, Helvetica, STHeiti STXihei, Microsoft JhengHei;    position: relative;}
+        img{display: block;width: 100%;height: 100%}
+        .main{
+           /* max-height:100%;
+            height: 100%;
+            width: 100%;
+            z-index: 1;
+            background: url(activity/img/30.png) no-repeat;
+            background-size: 100% 100%;
+            background-repeat: no-repeat;*/
+          /*  position: absolute;
+            max-height:100%;
+            height: 100%;*/
+            width: 100%;
+          /*  top: 0;
+            left: 0;
+            z-index: 1;*/
+        }
+        .s_form{
+            position: absolute;
+            width: 78%;
+            margin-top: 64%;
+            top: 0;
+            left:50%;
+            transform:translateX(-50%);
+            -webkit-transform:translateX(-50%);
+        }
+        .tel{
+            outline: 0;
+            border-radius: 10px;
+            padding:4%;
+            vertical-align: middle;
+            font-size: 16px;
+            line-height: 30px;
+            background-color: #fff;
+            color: #444;
+            z-index: 2;
+            border: 0;
+            font-weight: 400;
+            width: 92%;
+        }
+        .tel:focus{
+            outline: 0;
+        }
+
+        .s_btn1{
+          height: 50px;
+          width: 160px;
+          background-color: #f9d301;
+          color: #444;
+          outline: 0;
+          border-radius: 10px;
+          border: 0;
+          display: block;
+          margin: 6% auto;
+          font-family: "微软雅黑";
+          font-size: 16px;
+          line-height: 45px;
+        }
+           @media (max-width: 321px) {
+               .s_btn1{
+                    height: 40px;
+                    width: 120px;
+                    line-height: 34px;
+                    font-size: 14px;
+               }
+               .tel{
+                    line-height: 25px;
+                    font-size: 14px;
+               }
+              }
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none !important;
+            margin: 0;
+        }
+        input[type="number"]{-moz-appearance:textfield;}
+        /*placeholder水平居中*/
+            input::-ms-input-placeholder{text-align: center;}
+            input::-webkit-input-placeholder{text-align: center;}
+        .lt-modal{
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background-color: rgba(0,0,0,.5);
+            z-index: 90;
+        }
+        .modal-in{
+            border-radius:15px;
+            background-color: #fff;
+            position: absolute;
+            top: 35%;
+            width: 260px;
+            left: 50%;
+            transform:translate(-50%,-50%);
+            -webkit-transform:translate(-50%,-50%);
+            font-size: 18px;
+            text-align: center;
+        }
+        .modal-in h4,p{
+            color: #e55813;
+            margin-bottom: 5px;
+            margin-left: 5px;
+            margin-right: 5px;
+        }
+        .modal-in p{
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+        .modal-in button{
+            width: 100%;
+            border: 0;
+            margin: 0 auto;
+            height: 50px;
+            color: #764304;
+            background-color: #f9d301;
+            font-size: 16px;
+            border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 15px;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body class="ng-cloak" ng-cloak id="body" ng-controller="indexCtrl" >   
+<!-- style="height:{{bodyHeight}}px" -->
+
+    <div class="main" id="main"  ng-if="!enrollstate">
+        <img ng-src="{{imgUrls}}">
+        <form  name="myForm" class="s_form" ng-submit="showAlert()"> 
+                <input type="text" class="tel" name="telephone" placeholder="请输入11位手机号" minlength="11" maxlength="11" ng-model="$parent.$parent.phone"  pattern="1[0-9]{10}"  ng-if="inputshow==2" required>
+                <!--  -->
+                    <span style="color:red" ng-show="myForm.telephone.$touched ">
+                        <span ng-show="myForm.telephone.$error.pattern" >请输入正确的手机号</span>
+                    </span>
+                <button class="s_btn1" id="s_btn1" type="submit" >报名参加</button> 
+        </form>
+    </div>
+
+   <div class="lt-modal" ng-if="ltModal.show" >
+        <div class="modal-in">
+            <h4 ng-bind="ltModal.title"></h4> <!-- ng-bind="ltModal.title" -->
+            <button ng-click="ltModal.ok()" ng-bind="ltModal.button"></button>
+        </div>
+    </div>
+<script type="text/javascript">
+    /**
+     *  Module
+     *
+     * Description
+     */
+    var baseHttp=location.origin;
+     // var baseHttp="http://localhost:8080";
+   // var baseHttp="http://172.17.10.61:8080";
+//     var baseHttp="http://172.17.10.110:8080";
+     // var baseHttp="http://scandev.xs1h.com";
+
+    angular.module('app', [])
+            .run(['$http',function($http){
+                var wxCheckSignHost = location.href.split('#')[0];//获取当前的地址
+                $http.post(baseHttp+"/index/getWeChatJsSign?url=" + wxCheckSignHost,{test:1}).success(function (data, status, headers, config) { //获取微信登陆Config
+                if (data.statusCode == 0) {//获取成功
+                    wx.config(angular.fromJson(data.data));//添加到微e信的config
+                    wx.ready(function () {//微信准备成功
+                        wx.hideOptionMenu();//隐藏微信按钮
+                    });
+                }
+            }); 
+        }])
+            .controller('indexCtrl', ['$scope','$http', '$timeout','$location',function ($scope,$http,$timeout,$location) {
+
+                    $scope.enrollstate=true;
+                    //是否显示表单,enrollstate=true为不显示
+                    $scope.inputshow=true; //是否显示电话,默认不显示
+                    $scope.pageGoto=false;//是否已经在页面转跳当中
+                    $scope.newresigin=0;//默认是为获取
+                    $scope.phone="";//初始电话号码
+                    $scope.ltModal = {}; 
+                    var  obj=location.search.split("?")[1].split("&");//活动id
+                    for(var x  in obj){
+                        var tem=obj[x].split("=");
+                        if(tem[0]=="id"){
+                           var id = tem[1];
+                        };
+                    }
+                    $scope.bodyHeight=window.innerHeight;//页面高度
+    // $http.post(baseHttp + '/activities/findMember',{tets:1}).success(function (data) {
+
+
+    //                     // return;
+    //                     if(data.statusCode==-1) {//无法查询openid
+    //                        $scope.pageGoto=true;
+    //                        window.location.href = baseHttp + "/index/indexpage?type=1";
+    //                     }
+    //                     if (data.data&&data.data.phone) {
+    //                         /*记录不是新人  
+    //                         *1不是新人
+    //                         *2是新人
+    //                         */
+    //                         $scope.phone=data.data.phone;
+    //                         $scope.newresigin=1;  //不是新人             
+    //                     }else{
+    //                          $scope.newresigin=2;
+    //                     }; //是新人 
+
+    //                 }); 
+                    
+    
+    //              function newresigin(){
+    //                 if($scope.newresigin==1){
+    //                     return false;
+    //                 }else if(!$scope.newresigin){
+    //                    return $timeout(function(){
+    //                    newresigin()},50);
+    //                 }else{
+    //                     return true;
+    //                 }
+    //              }
+    //             $http.post(baseHttp + '/activities/findOne',{"activityId":id}).success(function (data) {
+
+    //                 if($scope.pageGoto) return;
+    //                 if(data.statusCode == 0){
+    //                     $scope.inputshow=newresigin();
+    //                     if(data.data.type==1){//新人有礼
+    //                         if(!$scope.inputshow) {
+    //                           window.location.href = baseHttp + "/index/indexpage?type=1";
+    //                             return;
+    //                         };
+    //                     }
+    //                     $scope.enrollstate=false;
+    //                     $scope.imgUrls =data.data.backImage; 
+    //                     //如果类型是新人有礼，判断是不是新人
+    //                     //如果没有
+                       
+    //                 }else{
+    //                     $scope.enrollstate=true;
+    //                     $scope.ltModal.title='活动已结束';
+    //                     $scope.ltModal.button="前往首页";
+    //                     $scope.ltModal.show=true;                              
+    //                     $scope.ltModal.ok=function(){
+    //                         window.location.href = baseHttp + "/index/indexpage?type=1";
+    //                     };
+    //                     }
+    //                 });
+                    var goIndex=function(){
+                        pageGoto=true;
+                        window.location.href = baseHttp + "/index/indexpage?type=1";
+                    }
+
+                    var apiNum=0,pageGoto=false;
+                    function showPage(){
+                        if(pageGoto){
+                            return;
+                        }
+                        if(apiNum<1){
+                            apiNum++;
+                            return;
+                        }
+                        $scope.inputshow=$scope.newresigin;
+                        var data=$scope.findOneData;
+                        if(data.type==1){//新人有礼
+                            if($scope.inputshow==1) {
+                             goIndex()
+                                return;
+                            };
+                        }
+                        $scope.enrollstate=false;
+                        $scope.imgUrls =data.adminUrl+data.content.split('"image":"')[1].split('"')[0]; 
+                        console.log($scope.imgUrls);
+                    }
+                    $http.post(baseHttp + '/activities/findMember',{tets:1}).success(function (data) {
+                        if(data.statusCode==-1) {
+                          goIndex();
+                        }
+                        if (data.data&&data.data.phone) {
+                            $scope.phone=data.data.phone;
+                            $scope.newresigin=1;  //不是新人             
+                        }else{
+                             $scope.newresigin=2;
+                        }; //是新人 
+                        showPage();
+                    }); 
+
+                $http.post(baseHttp + '/activities/findOne',{"activityId":id}).success(function (data) {
+                    if(data.statusCode == 0){
+                        $scope.findOneData=data.data;
+                        showPage();
+                    }else{
+                        $scope.enrollstate=true;
+                        $scope.ltModal.title='活动已结束';
+                        $scope.ltModal.button="前往首页";
+                        $scope.ltModal.show=true;                              
+                        $scope.ltModal.ok=function(){
+                            window.location.href = baseHttp + "/index/indexpage?type=1";
+                        };
+                    }
+                });
+
+
+
+                var cach=false;
+                $scope.showAlert = function(){
+                    var phone=$scope.phone;
+                    if(cach) return;
+                    if(phone){
+                        cach=true;
+                        $http.post(baseHttp+"/activities/join",{"activityId":id,"phone":phone}).success(function(data){
+                            if(data.statusCode == 0){
+                                var title=[];
+
+                                var res=data.data;
+                                 
+                                for(var i=0,j=res.length;i<j;i++){
+                                  title.push('"'+res[i].name+'"');
+                                }
+                                $scope.ltModal.title="恭喜您获得:"+title.toString();
+                                $scope.ltModal.button="去使用";
+                                $scope.ltModal.show=true;                                                                                          
+                                $scope.ltModal.ok=function(){
+                                    window.location.href = baseHttp + "/index/indexpage?type=1";
+                                };
+                            }
+                            else if(data.statusCode == -1){
+                                cach=false;
+                                $scope.ltModal.show=true;
+                                $scope.ltModal.title=data.statusMessage;
+                                $scope.ltModal.button="去使用";
+                                $scope.ltModal.ok=function(){
+                                window.location.href = baseHttp + "/index/indexpage?type=1";
+                                };
+                            }
+                        })
+                    }
+                }
+            }])
+</script>
+</body>
+</html>

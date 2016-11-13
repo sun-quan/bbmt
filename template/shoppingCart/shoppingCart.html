@@ -1,0 +1,73 @@
+<ion-view class="shoppingCart" cache-view="false">
+    <ion-header-bar align-title="center" class="bar-energized">
+        <a class="btn-back" ng-click="go(-1)"></a>
+        <h1 class="title">购物车</h1>
+        <i class="btn-right delete" ng-click="deleteAll()"></i>
+    </ion-header-bar>
+    <ion-content overflow-scroll="false" delegate-handle="shoppingCartContent">
+        <div ng-show="$parent.shoppingCart.length > 0">
+            <div class="cart" ng-repeat="item in mealInfoList" ng-if="item.selectedCount > 0">
+                <div class="title">
+                    <span>
+                        <label class="checkbox">
+                            <input type="checkbox" ng-model="item.checked" ng-change="$parent.refreshCart(item)">
+                        </label>
+                    </span>
+                    <span class="mealInfo" ng-bind="item.name"></span>
+                    <i class="icon-am" ng-if="item.id == 2 || item.id == 1"></i>
+                    <i class="icon-mm" ng-if="item.id == 3 || item.id == 1"></i>
+                    <i class="icon-pm" ng-if="item.id == 4 || item.id == 1"></i>
+                    <p>共{{item.selectedCount}}件</p>
+                </div>
+                <ul class="list">
+                    <li class="xs-item1" ng-repeat="item in item.itemList | orderBy: 'commodityId'" ng-if="item.count > 0">
+                        <img ng-src="{{imgRoot + item.scan}}" />
+                        <div class="desc">
+                            <p class="title" ng-bind="item.commodityName"></p>
+                            <div class="bottom">
+                                <span class="txt-price" ng-bind="'￥' + item.promotion"></span>
+                                <div class="number">
+                                <span class="minusCount">
+                                    <div ng-show="item.count > 0" style="display: table">
+                                        <span class="minus" ng-click="removeItem(item)"></span>
+                                        <span class="count" ng-bind="item.count"></span>
+                                    </div>
+                                </span>
+                                    <span class="plus" ng-click="addItem(item,$event)"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <div class="footer">
+                    <span>总计:</span>
+                    <span class="price" ng-bind="'￥' + (item.totalPrice|number:2)">￥15.00</span>
+                </div>
+            </div>
+            <div class="empty"></div>
+        </div>
+        <div ng-if="$parent.shoppingCart.length == 0" class="text-center market-empty">
+            <div class="market">
+            </div>
+            <div class="tips">亲～你的购物车空空如也,赶紧喂饱它吧!</div>
+            <a class="xs-btn" href="#/home" >随便逛逛</a>
+        </div>
+    </ion-content>
+    <div class="bar bar-footer bar-dark" ng-show="$parent.shoppingCart.length > 0">
+        <div class="row-basket">
+            <div class="media-basket">
+                <div class="media-body">
+                    <i class="icon-basket">
+                        <div class="xs-badge">
+                            <span class="badge" ng-bind="shoppingCartTotalNum"></span>
+                        </div>
+                    </i>
+                    <div class="price" ng-bind="(shoppingCartTotalPrice|currency :'￥':2)"></div>
+                </div>
+            </div>
+            <div class="basket-btn" ng-click="go('pay',{from:'shoppingCart'})" style="pointer-events: auto;">
+                <a class="btn-o-tobuy {{shoppingCartTotalPrice <= 0 ? 'btn-o-tobuy-none' : 'font16'}}" ng-bind="shoppingCartTotalPrice > 0 ? '去结算':'至少选择一款商品'"></a>
+            </div>
+        </div>
+    </div>
+</ion-view>

@@ -1,0 +1,33 @@
+<ion-view class="coupons">
+    <ion-header-bar class="bar-energized">
+        <a class="btn-back" ng-click="go(-1)"></a>
+        <div class="title">我的优惠券</div>
+        <a class="btn-right" ng-click="noUseCoupons()" ng-if="from == 'pay'">不使用</a>
+    </ion-header-bar>
+    <ion-content overflow-scroll="false">
+        <div class="item-coupons" ng-repeat="item in couponsList | orderBy: 'status'" ng-click="useCoupons(item)" ng-class="{'unavailable':item.status != 1}" ng-if="(showHistoryFlg && item.status != 1) || (!showHistoryFlg && item.status == 1)">
+            <div class="coupons-left">
+                <div class="price" ng-bind="'￥'+item.price"></div>
+            </div>
+            <div class="coupons-right-part1">
+
+            </div>
+            <div class="coupons-right-part2 {{'status' + item.status}}">
+                <div class="coupons-name">
+                    <span ng-bind="item.name"></span>
+                    <!--<label class="checkbox">-->
+                        <!--<input type="radio" name="coupons" ng-model="item.checked" value="'true'" />-->
+                    <!--</label>-->
+                </div>
+                <div class="coupons-time" ng-bind="'有效期：'+item.displayTime">
+                </div>
+                <div class="coupons-remark" ng-bind="'[使用说明] '+item.remark">
+                </div>
+            </div>
+            <div class="coupons-right-part3">
+
+            </div>
+        </div>
+        <div class="tips" ng-click="showHistory()">查看{{showHistoryFlg ? '可用':'历史'}}优惠券</div>
+    </ion-content>
+</ion-view>

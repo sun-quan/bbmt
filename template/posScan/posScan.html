@@ -1,0 +1,12 @@
+<ion-view class="posScan" cache-view="false">
+    <ion-header-bar class="bar-energized">
+        <div class="title">订单查询</div>
+    </ion-header-bar>
+    <ion-content>
+        <div class="store-name">当前门店:{{currStore.name}}</div>
+        <div class="orderNumber">
+            <input placeholder="请输入取餐号" type="text" ng-model="$parent.orderNumber" >
+            <a class="xs-btn" ng-click="getOrderInfoByOrderNumber()">查询</a>
+        </div>
+    </ion-content>
+</ion-view>

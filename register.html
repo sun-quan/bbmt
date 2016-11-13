@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="initial-scale=1,maximum-scale=1,user-scalable=no,width=device-width,height=device-height"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <script type="text/javascript" src="http://lib.xs1h.com/angular/v1.3.13/angular.min.js"></script>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <style type="text/css">
+        body,  div,  p { margin: 0; padding: 0;}
+        html { overflow: hidden;}
+        body { width: 100%;  *cursor: default;
+            overflow: hidden; font: 16px/1.5 Arial, Helvetica, STHeiti STXihei, Microsoft JhengHei;    position: relative;}
+        img{display: block;width: 100%;height: 100%}
+        .pic2{
+            position: absolute;
+            max-height:100%;
+            height: 100%;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+        .s_form{
+            position: absolute;
+            width: 78%;
+            margin-top: 64%;
+            top: 0;
+            left:50%;
+            transform:translateX(-50%);
+            -webkit-transform:translateX(-50%);
+        }
+        .tel{
+            outline: 0;
+            border-radius: 10px;
+            padding:4% 0;
+            vertical-align: middle;
+            font-size: 16px;
+            line-height: 16px;
+            background-color: #fff;
+            color: #444;
+            z-index: 2;
+            border: 0;
+            font-weight: 400;
+            width: 100%;
+            border: 2px solid #2d9f61;
+        }
+        .tel:focus{
+            outline: 0;
+        }
+        .s_btn1{
+            width: 55.5%;
+            color: #444;
+            outline: 0;
+            border: 0;
+            display: block;
+            margin: 6% auto;
+            font-size: 16px;
+            padding-bottom: 18%;
+            line-height: 30px;
+            background: url(activity/img/oldimgs/31-2x.png) no-repeat;
+            background-size: 100%;
+        }
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none !important;
+            margin: 0;
+        }
+        input[type="number"]{-moz-appearance:textfield;}
+        /*placeholder水平居中*/
+            input::-ms-input-placeholder{text-align: center;}
+            input::-webkit-input-placeholder{text-align: center;}
+        .lt-modal{
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background-color: rgba(0,0,0,.5);
+            z-index: 90;
+        }
+        .modal-in{
+            border-radius:15px;
+            background-color: #fff;
+            position: absolute;
+            top: 35%;
+            width: 260px;
+            left: 50%;
+            transform:translate(-50%,-50%);
+            -webkit-transform:translate(-50%,-50%);
+            font-size: 18px;
+            text-align: center;
+        }
+        .modal-in h4{
+            color: #e55813;
+            margin-bottom: 5px;
+        }
+        .modal-in button{
+            width: 100%;
+            border: 0;
+            margin: 0 auto;
+            height: 50px;
+            color: #764304;
+            background-color: #f9d301;
+            font-size: 16px;
+            border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 15px;
+            font-weight: 500;
+        }
+        .loading{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background-color: #555;
+            z-index: 99;
+        }
+        .imgloading{
+            position: absolute;
+            height:120px;
+            width:120px;
+            top: 50%;
+            left: 50%;
+            margin-top: -60px;
+            margin-left: -60px;
+            background: url(activity/img/oldimgs/loading@2x.png) no-repeat;
+            animation:rotate 1s ease 0s normal none infinite;
+            -webkit-animation:rotate 1s ease 0s normal none infinite;
+                    }
+    @-webkit-keyframes rotate{
+        from{transform: rotate(0deg);
+            -webkit-transform: rotate(0deg);}   /* Safari and Chrome */
+        to{transform: rotate(360deg);
+            -webkit-transform: rotate(360deg);}   /* Safari and Chrome */
+    }
+    @keyframes rotate{
+        from{transform: rotate(0deg);
+            -webkit-transform: rotate(0deg);}   /* Safari and Chrome */
+        to{transform: rotate(360deg);
+            -webkit-transform: rotate(360deg);}   /* Safari and Chrome */
+    }
+    </style>
+</head>
+<body id="body" ng-controller="indexCtrl" style="height:{{bodyHeight}}px">
+<div id="loading" class="loading" >
+    <div class="imgloading"></div>
+</div>
+<div class=" pic2" id="pic2" style="display:none">
+    <img src="activity/img/oldimgs/30.jpg">
+    <form  name="myForm" class="s_form" ng-submit="showAlert()">
+        <div>
+            <input type="text" class="tel" name="telephone" placeholder="请输入11位手机号" minlength="11" maxlength="11" ng-model="phone"  pattern="1[0-9]{10}" required>
+                <span style="color:red" ng-show="myForm.telephone.$touched ">
+                    <span ng-show="myForm.telephone.$error.pattern" >请输入正确的手机号</span>
+                </span>
+        </div>
+        <button class="s_btn1" id="s_btn1" type="submit" ></button>
+    </form>
+    <div class="lt-modal" ng-if="ltModal.show"  > <!-- style="{{ltModal.show?'display:block':''}}" -->
+        <div class="modal-in">
+            <h4 ng-bind="ltModal.title"></h4>
+            <button ng-click="ltModal.ok()" ng-bind="ltModal.button"></button>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    /**
+     *  Module
+     *
+     * Description
+     */
+   var baseHttp=location.origin;
+     // var baseHttp="http://localhost:8080";
+    // var baseHttp="http://172.16.1.158:8080";
+//     var baseHttp="http://scandev.xs1h.com";
+    angular.module('app', [])
+            .run(['$http',function($http){
+                var wxCheckSignHost = location.href.split('#')[0];//获取当前的地址
+                $http.post(baseHttp+"/index/getWeChatJsSign?url=" + wxCheckSignHost,{test:1}).success(function (data, status, headers, config) { //获取微信登陆Config
+                if (data.statusCode == 0) {//获取成功
+                    wx.config(angular.fromJson(data.data));//添加到微e信的config
+                    wx.ready(function () {//微信准备成功
+                        wx.hideOptionMenu();//隐藏微信按钮
+                    });
+                }
+            }); 
+        }])
+            .controller('indexCtrl', ['$scope','$http', '$timeout',function ($scope,$http,$timeout) {
+               $scope.bodyHeight=window.innerHeight;
+                $http.post(baseHttp + '/activities/findMember',{tets:1}).success(function (data) {
+                    if (data.data&&data.data.phone){                        
+                        window.location.href = baseHttp + "/index/indexpage?type=1";
+                    }else{
+                      var loadNode=document.getElementById('loading');
+                        loadNode.parentNode.removeChild(loadNode);
+                        var loadNode=document.getElementById('pic2');
+                        loadNode.style.display="block";
+                    }
+                }); 
+
+                $scope.ltModal = {};              
+                var cach=false;
+                $scope.showAlert = function(){
+                    var phone=$scope.phone;
+                    if(cach) return;
+                    if(phone){
+                        cach=true;
+                        $http.post(baseHttp+"/activities/joinActivities",{"activityId":4,"phone": phone}).success(function(data){
+                            if(data.statusCode == 0){
+                                $scope.ltModal.title="领取成功";
+                                $scope.ltModal.button="去使用";
+                                $scope.ltModal.show=true;
+
+                                $scope.ltModal.ok=function(){
+                                    window.location.href = baseHttp + "/index/indexpage?type=1";
+                                };
+                            }
+                            else if(data.statusCode == -1){
+                                cach=false;
+                                $scope.ltModal.show=true;
+                                $scope.ltModal.title=data.statusMessage;
+//                                $scope.ltModal.text="";
+                                $scope.ltModal.button="去使用";
+                                $scope.ltModal.ok=function(){
+                                    window.location.href = baseHttp + "/index/indexpage?type=1";
+                                };
+                            }
+                        })
+                    }
+                }
+            }])
+</script>
+</body>
+</html>

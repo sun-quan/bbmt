@@ -1,0 +1,102 @@
+<ion-view class="commodityGroup">
+    <ion-header-bar class="bar-energized">
+        <a class="btn-back" ng-click="go(-1)"></a>
+        <div class="title">团购详情</div>
+    </ion-header-bar>
+    <ion-content overflow-scroll="false">
+        <div ng-if="activityInfo.activityId">
+            <div class="bigImg">
+                <img ng-src="{{imgRoot + activityInfo.commodity.commodityBigImg}}"/>
+            </div>
+            <div class="desc">
+                <p class="title" ng-bind="activityInfo.name"></p>
+                <div class="bottom">
+                    <span class="txt-price" ng-bind="'￥' + activityInfo.commodity.promotion"></span>
+                    <div class="number">
+                            <span class="minusCount">
+                                <div ng-show="activityInfo.commodity.count > 0" style="display: table">
+                                    <span class="minus" ng-click="removeItem(activityInfo.commodity)"></span>
+                                    <span class="count" ng-bind="activityInfo.commodity.count"></span>
+                                </div>
+                            </span>
+                        <span class="plus" ng-click="addItem(activityInfo.commodity,$event)"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="split-line"></div>
+            <div class="activity-address">
+                <div class="address-title">
+                    <span>活动地点</span>
+                </div>
+                <div class="address-content">
+                    <div>
+                        <div class="store-name" ng-bind="activityInfo.storeInfo.name"></div>
+                        <div class="store-address" ng-bind="activityInfo.storeInfo.address"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="split-line"></div>
+            <div class="activity-tips">
+                <div class="tips-title">
+                    <span>团购小贴士</span>
+                </div>
+                <div class="tips-content" ng-bind="activityInfo.activityDesc">
+                </div>
+            </div>
+            <div class="split-line"></div>
+            <div class="activity-time">
+                <span class="time-title">活动剩余时间</span>
+                <a class="time-hours" ng-bind="activityInfo.CDHours"></a>
+                <span>：</span>
+                <a class="time-minute" ng-bind="activityInfo.CDMinute"></a>
+                <span>：</span>
+                <a class="time-second" ng-bind="activityInfo.CDSecond"></a>
+            </div>
+            <div class="split-line"></div>
+            <div class="member-info">
+                <div>
+                    当前已有
+                    <span class="member-count" ng-bind="activityInfo.memberCount"></span>
+                    人参团
+                </div>
+            </div>
+            <div class="share-text">
+                <span>分享到</span>
+            </div>
+            <div class="share-btn">
+                <div class="shareAppMessage" ng-click="shareTo('shareAppMessage')">
+                    <img src="img/commodityGroup/shareAppMessage.png" alt=""/>
+                    <div>微信好友</div>
+                </div>
+                <div class="shareTimeline" ng-click="shareTo('shareTimeline')">
+                    <img src="img/commodityGroup/shareTimeline.png" alt=""/>
+                    <div>微信朋友圈</div>
+                </div>
+            </div>
+            <div class="split-line"></div>
+            <div class="commodityContent">
+                <img ng-src="{{imgRoot + img.modelImg}}" ng-repeat="img in activityInfo.commodity.packageContents"/>
+            </div>
+        </div>
+        <div ng-if="!activityInfo.activityId" class="empty">
+            该商品准备中,敬请期待!
+        </div>
+    </ion-content>
+    <div class="bar bar-footer bar-dark" ng-if="activityInfo">
+        <div class="row-basket">
+            <div class="media-basket">
+                <div class="media-body">
+                    <i class="icon-basket">
+                        <div class="xs-badge">
+                            <span class="badge" ng-bind="shoppingCartTotalNum"></span>
+                        </div>
+                    </i>
+                    <div class="price" ng-bind="'￥' + (shoppingCartTotalPrice|number:2)"></div>
+                </div>
+            </div>
+            <div class="basket-btn" ng-click="go('shoppingCart')" style="pointer-events: auto;">
+                <a class="btn-o-tobuy {{shoppingCartTotalPrice <= 0 ? 'btn-o-tobuy-none' : 'font16'}}" ng-bind="shoppingCartTotalPrice > 0 ? '马上团购':'选择任意餐品'"></a>
+            </div>
+        </div>
+    </div>
+</ion-view>

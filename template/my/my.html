@@ -1,0 +1,66 @@
+<ion-view class="my" cache-view="false">
+    <ion-content overflow-scroll="false">
+        <div class="background">
+            <div class="headImg">
+                <img ng-src="../img/my/defaultHeadImg.png"/>
+                <div class="userName"></div>
+            </div>
+        </div>
+        <div class="item item-divider" ng-click="go('order',{orderType:'nopay'})">
+            我的订单
+        </div>
+        <div class="my-content">
+            <div class="orderType" ng-click="go('order',{orderType:'nopay'})">
+                <img ng-src="../img/my/icon-10.png"/>
+                <div class="Type10">待支付</div>
+            </div>
+            <div class="orderType" ng-click="go('order',{orderType:'wait'})">
+                <img ng-src="../img/my/icon-35.png"/>
+                <div class="Type35">待取餐</div>
+            </div>
+            <div class="orderType" ng-click="go('order',{orderType:'over'})">
+                <img ng-src="../img/my/icon-40.png"/>
+                <div class="Type40">已完成</div>
+            </div>
+            <div class="orderType" ng-click="go('order',{orderType:'cancel'})">
+                <img ng-src="../img/my/icon-50.png"/>
+                <div class="Type50">已取消</div>
+            </div>
+        </div>
+        <div class="item item-divider title" ng-click="go('coupons',{from:'my'})">
+            <i class="icon-coupons"><span>我的优惠券</span></i>
+        </div>
+        <div class="item item-divider title" ng-click="go('address')">
+            <i class="icon-address"><span>地址管理</span></i>
+        </div>
+        <div class="item item-divider title tel">
+            <i class="icon-tel">
+                <span>客服电话</span>
+            </i>
+            <a href="tel:400-675-8517">400-675-8517</a>
+        </div>
+        <div class="item item-divider title" ng-click="go('FAQ')">
+            <i class="icon-faq"><span>常见问题</span></i>
+        </div>
+    </ion-content>
+    <ion-footer-bar>
+        <div class="footer-menu">
+            <div class="menu-home" ng-class="{'checked':currFooterMenu == 0}" ng-click="enter('home',0)">
+                <i class="icon"></i>
+                <div class="name" ng-bind="'首页'"></div>
+            </div>
+            <div class="menu-order" ng-class="{'checked':currFooterMenu == 1}" ng-click="enter('order',1)">
+                <i class="icon"></i>
+                <div class="name" ng-bind="'订单'"></div>
+            </div>
+            <div class="menu-car" ng-class="{'checked':currFooterMenu == 2}" ng-click="enter('shoppingCart',2)">
+                <i class="icon"></i>
+                <div class="name" ng-bind="'购物车'"></div>
+            </div>
+            <div class="menu-my" ng-class="{'checked':currFooterMenu == 3}" ng-click="enter('my',3)">
+                <i class="icon"></i>
+                <div class="name" ng-bind="'我的'"></div>
+            </div>
+        </div>
+    </ion-footer-bar>
+</ion-view>

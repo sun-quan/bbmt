@@ -1,0 +1,24 @@
+<ion-view class="groupInfo">
+    <ion-header-bar class="bar-energized">
+        <a class="btn-back" ng-click="go(-1)"></a>
+        <h1 class="title">参团信息</h1>
+    </ion-header-bar>
+    <ion-content overflow-scroll="false">
+        <div class="order-info" ng-repeat="order in groupMealList">
+            <div class="order-title">
+                <a class="default-user">
+                    <img src="img/order/icon-default-user.png">
+                </a>
+                <a class="tel" href="tel:{{order.userPhone}}">
+                    <img src="img/order/icon-tel.png"/>
+                </a>
+            </div>
+            <ul class="order-commodityList">
+                <li class="commodity" ng-repeat="commodity in order.commodityList">
+                    <div class="commodity-name">{{::commodity.commodityName}}</div>
+                    <div class="commodity-number">× {{::commodity.totalNum}}</div>
+                </li>
+            </ul>
+        </div>
+    </ion-content>
+</ion-view>

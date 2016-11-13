@@ -1,0 +1,72 @@
+<ion-view class="itemList">
+    <ion-header-bar align-title="center" class="bar-energized">
+        <a class="btn-back" ng-click="go(-1)"></a>
+        <div class="title">
+            <span class="container icon">
+                <span ng-bind="$parent.currStore.name" class="storeName ng-binding"></span>
+            </span>
+        </div>
+    </ion-header-bar>
+    <div class="subList">
+        <ion-list>
+            <ion-item ng-repeat="item in categoryList" ng-class="{'active' : $index==currIndex}" ng-click="scrollTo(item,$index)">{{::item.name}}
+                <div class="xs-badge">
+                    <span ng-if="item.selectedCount > 0" ng-bind="item.selectedCount"></span>
+                </div>
+            </ion-item>
+        </ion-list>
+    </div>
+    <ion-content delegate-handle="mainScroll" scroll-event-interval="800" on-scroll="swipe()" overflow-scroll="false">
+        <div class="mainContent">
+            <div class="left"></div>
+            <div class="list-content">
+                <ul class="list">
+                    <li class="xs-item1" ng-class="{'item-divider':item.name}" ng-repeat="item in totalItemList track by $index" ng-style="{true:{'height':'{{item.height+'px'}}'}}[item.empty]">
+                        <span ng-if="item.name">{{::item.name}}</span>
+                        <img ng-if="!item.name && !item.empty && item.commodityClass == 6" ng-src="{{::(imgRoot + item.scan)}}" ui-sref="commodity-detail({commodityId:item.commodityId})" />
+                        <img ng-if="!item.name && !item.empty && item.commodityClass != 6" ng-src="{{::(imgRoot + item.scan)}}" />
+                        <div class="desc" ng-if="!item.name && !item.empty">
+                            <span class="icon-activity" ng-if="item.originalPrice && item.promotion != item.originalPrice"></span>
+                            <p class="title">{{::item.commodityName}}</p>
+                            <div>
+                                <i class="icon-am" ng-if="item.mealId == 2 || item.mealId == 1"></i>
+                                <i class="icon-mm" ng-if="item.mealId == 3 || item.mealId == 1"></i>
+                                <i class="icon-pm" ng-if="item.mealId == 4 || item.mealId == 1"></i>
+                            </div>
+                            <div class="bottom">
+                                <span class="txt-price">￥{{::item.promotion}}</span>
+                                <span class="original-price" ng-if="item.originalPrice && item.promotion != item.originalPrice">￥{{::item.originalPrice}}</span>
+                                <div class="number">
+                                <span class="minusCount">
+                                    <div ng-show="item.count > 0" style="display: table">
+                                        <span class="minus" ng-click="removeItem(item)"></span>
+                                        <span class="count" ng-bind="item.count"></span>
+                                    </div>
+                                </span>
+                                    <span class="plus" ng-click="addItem(item,$event)"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </ion-content>
+    <div class="bar bar-footer bar-dark">
+        <div class="row-basket">
+            <div class="media-basket">
+                <div class="media-body">
+                    <i class="icon-basket">
+                        <div class="xs-badge">
+                            <span class="badge" ng-bind="shoppingCartTotalNum"></span>
+                        </div>
+                    </i>
+                    <div class="price" ng-bind="(shoppingCartTotalPrice|currency :'￥':2)"></div>
+                </div>
+            </div>
+            <div class="basket-btn" ng-click="go('shoppingCart')" style="pointer-events: auto;">
+                <a class="btn-o-tobuy {{shoppingCartTotalPrice <= 0 ? 'btn-o-tobuy-none' : 'font16'}}" ng-bind="shoppingCartTotalPrice > 0 ? '去结算':'选择任意餐品'"></a>
+            </div>
+        </div>
+    </div>
+</ion-view>

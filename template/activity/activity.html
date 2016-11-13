@@ -1,0 +1,13 @@
+<ion-view class="activity">
+    <ion-content overflow-scroll="false">
+        <div ng-repeat="frameInfo in activityInfo.frameList" class="frame">
+            <div  class="frame{{::frameInfo.frame}}">
+                <div ng-repeat="modelInfo in frameInfo.moduleList" class="modelInfo">
+                    <div class="model{{::modelInfo.moduleType}}" ng-click="changeView(frameInfo,modelInfo)">
+                        <img ng-src="{{::(imgRoot + modelInfo.image)}}" alt="" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

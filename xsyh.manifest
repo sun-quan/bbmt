@@ -1,0 +1,16 @@
+CACHE MANIFEST
+
+#VERSION 34fa89f18a
+#每次上线必须修改版本号以及FALLBACK对应的CSS JS
+
+CACHE:
+http://lib.xs1h.com/ionic/v1.2.4/css/ionic.min.css
+http://lib.xs1h.com/ionic/v1.2.4/js/ionic.bundle.min.js
+http://lib.xs1h.com/ionic/v1.2.4/fonts/ionicons.ttf
+
+NETWORK:
+*
+
+FALLBACK
+css/main-min-299bfea0f0.css css/main-min.css
+js/main-min-34fa89f18a.js js/debug.js

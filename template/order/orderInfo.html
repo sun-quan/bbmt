@@ -1,0 +1,143 @@
+<ion-view class="orderInfo">
+    <ion-header-bar class="bar-energized">
+        <a class="btn-back" ng-click="go(-1)"></a>
+        <h1 class="title">订单详情</h1>
+    </ion-header-bar>
+    <ion-content overflow-scroll="false" ng-class="{'has-btn':orderInfo.orderStates == 10}">
+        <div class="order-info">
+            <div class="order-title" ng-if="orderInfo.displayTime">
+                <span class="order-time">{{::orderInfo.takeType != 1 ? '预计送达':'取餐时间'}}：{{::orderInfo.displayTime}}</span>
+            </div>
+            <div class="order-number" ng-if="orderInfo.orderStates > 10 && orderInfo.orderStates != 20 && orderInfo.orderStates != 50">
+                <div class="title">取餐号:</div>
+                <div class="orderNumber">
+                    <span>{{::orderInfo.orderNumber}}</span>
+                </div>
+                <div class="tips">出示上方号码，提取您的餐品</div>
+            </div>
+            <div class="order-states" ng-if="orderInfo.orderStates >= 30 && orderInfo.orderStates <= 40">
+                <div class="schedule">
+                    <div class="schedule-item-first" ng-class="{'active':orderInfo.orderStates >= 30}">
+                        <div class="point">
+                            <i class="icon-schedule"></i>
+                            <div class="content">
+                                <div class="sch_text">{{::orderInfo.takeType != 3 ? '准备餐品':'疯狂拼单'}}</div>
+                                <div class="finishtime" ng-bind="orderInfo.payTime|date:'MM.dd HH:mm'"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="schedule-item" ng-class="{'active':orderInfo.orderStates >= 35}">
+                        <div class="line"></div>
+                        <div class="point">
+                            <i class="icon-schedule"></i>
+                            <div class="content">
+                                <div class="sch_text">{{::orderInfo.takeType != 3 ? '等待取餐':'正在配送'}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="schedule-item" ng-class="{'active':orderInfo.orderStates == 40}">
+                        <div class="line"></div>
+                        <div class="point">
+                            <i class="icon-schedule"></i>
+                            <div class="content">
+                                <div class="sch_text">订单完成</div>
+                                <div class="finishtime" ng-bind="orderInfo.completeTime|date:'MM.dd HH:mm'"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="order-states" ng-if="orderInfo.orderStates >= 60 && orderInfo.orderStates <= 90">
+                <div class="schedule">
+                    <div class="schedule-item-first" ng-class="{'active':orderInfo.orderStates >= 60}">
+                        <div class="point">
+                            <i class="icon-schedule"></i>
+                            <div class="content">
+                                <div class="sch_text">正在审核</div>
+                                <div class="finishtime" ng-bind="orderInfo.refundTime|date:'MM.dd HH:mm'"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="schedule-item" ng-class="{'active':orderInfo.orderStates >= 70}">
+                        <div class="line"></div>
+                        <div class="point">
+                            <i class="icon-schedule"></i>
+                            <div class="content">
+                                <div class="sch_text">审核通过</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="schedule-item" ng-class="{'active':orderInfo.orderStates == 80}">
+                        <div class="line"></div>
+                        <div class="point">
+                            <i class="icon-schedule"></i>
+                            <div class="content">
+                                <div class="sch_text">退款完成</div>
+                                <div class="finishtime" ng-bind="orderInfo.updateTime|date:'MM.dd HH:mm'"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="spline"></div>
+            <div class="order-store">
+                <i class="icon-store"></i>
+                <span class="store-name">{{::orderInfo.storeName}}</span>
+            </div>
+            <ul class="list">
+                <li class="xs-item1" ng-repeat="item in orderInfo.commodityList">
+                    <img ng-src="{{imgRoot + item.commodityImg}}"/>
+                    <div class="desc">
+                        <p ng-bind="item.commodityName"></p>
+                        <div class="bottom">
+                            <span class="txt-price" ng-bind="'￥' + item.promotion"></span>
+                            <div class="number">
+                                <span class="count" ng-bind="'× ' + item.totalNum"></span>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <div class="spline"></div>
+            <div class="order-price">
+                <div class="originPrice" ng-if="orderInfo.originPrice && orderInfo.originPrice != 0">
+                    <div>餐品费用</div>
+                    <div class="price">{{::orderInfo.originPrice|currency :'￥':2}}</div>
+                </div>
+                <div class="discountPrice" ng-if="orderInfo.discountPrice && orderInfo.discountPrice != 0">
+                    <div>折扣</div>
+                    <div class="price">{{::orderInfo.discountPrice|currency :'-￥':2}}</div>
+                </div>
+                <div class="expressCharge" ng-if="orderInfo.distributePrice && orderInfo.distributePrice != 0">
+                    <div>配送费</div>
+                    <div class="price">{{::orderInfo.distributePrice|currency :'+￥':2}}</div>
+                </div>
+                <div class="couponsPrice" ng-if="orderInfo.couponsPrice && orderInfo.couponsPrice != 0">
+                    <div>优惠券</div>
+                    <div class="price">{{::orderInfo.couponsPrice|currency :'-￥':2}}</div>
+                </div>
+                <div class="total">
+                    <div>总计</div>
+                    <div class="price">{{::orderInfo.total|currency :'￥':2}}</div>
+                </div>
+            </div>
+            <div class="spline"></div>
+            <div class="order-detail">
+                <div class="title">
+                    <i class="icon-order"></i>
+                    <div>订单详情</div>
+                </div>
+                <div class="content">
+                    <div><span class="left">订单编号：</span>{{::orderInfo.orderCode}}</div>
+                    <div><span class="left">下单时间：</span>{{::orderInfo.orderTime|date:'yyyy-MM-dd HH:mm:ss'}}</div>
+                    <div><span class="left">支付方式：</span>微信支付</div>
+                    <div ng-if="orderInfo.takeType == 2"><span class="left">收货人：</span>{{::orderInfo.consignee}}</div>
+                    <div ng-if="orderInfo.takeType == 2"><span class="left">联系电话：</span>{{::orderInfo.cellPhone}}</div>
+                    <div ng-if="orderInfo.takeType == 2"><span class="left">收货地址：</span>{{::orderInfo.address}}</div>
+                    <div ng-if="orderInfo.takeType == 1"><span class="left">取餐门店：</span>{{::orderInfo.storeName}}</div>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+    <div class="btn-pay" ng-click="pay(orderInfo)" ng-if="orderInfo.orderStates == 10">立即支付</div>
+</ion-view>

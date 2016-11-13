@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>技术支持</title>
+	<style type="text/css">
+	body{
+		font-family: "微软雅黑";
+		font-size: 12px;
+		color: #666;
+		margin: 0 50px;
+	}
+	div,p,ul,li,header,section,h3{
+		padding: 0;
+		margin: 0;
+	}
+	ul,li{
+		list-style: none;
+	}
+	#tags{
+		border-bottom: 1px solid #e8ecf2;
+		overflow: hidden;
+		display: flex;
+	}
+	#tags li{
+		flex:0.5;	
+		padding: 20px 0%;
+		text-align: center;
+		font-size: 16px;
+		color: #333;
+		margin: 0 20px;		
+	}
+	.active{
+		border-bottom: 2px solid #fbd400 !important;
+		color: #fbd400 !important;
+	}
+	#tags li a{
+		display: inline-block;
+		text-decoration: none;		
+	}
+	#advice{
+		margin: 20px auto;
+		padding: 2%;
+
+	}
+	#remain{
+		position: absolute;
+		right: 70px;
+		top:290px;
+	}
+	#sec_content{
+		margin: 10px 0;
+	}
+	.s_active{
+		display: block;
+	}
+	.sub{
+	display:block;
+	width: 80%;
+    height: 40px;
+    margin: 20px auto;
+    background-color: #fbd400;
+    border-radius: 10px;
+    font-size: 16px;
+    color:#784203;
+    border-color: #fbd400;
+    text-align:center;
+    line-height: 40px;
+}
+
+	</style>
+</head>
+<body>
+	<header>
+		<ul id="tags">
+			<li class="active"><a>技术支持</a></li>
+		</ul>
+	</header>
+	<div id="sec_content">
+		<section class="s_active">
+			<textarea name="advice" id="advice" placeholder="请留下您使用我们产品的宝贵建议和意见" style="width:96%;height:200px;">
+			</textarea>
+			<p id="remain">剩余200字</p>
+			<a class="sub">提交</a>
+		</section>
+	</div>
+	<script type="text/javascript">
+		var textareaObj=document.getElementById("advice")
+		  remainObj=document.getElementById("remain")
+		  num=0;
+		if(/msie/i.test(navigator.userAgent)){
+		  textareaObj.onpropertychange=function(){
+		    num=200-this.value.length;
+		    remainObj.innerHTML="剩余"+num+"字";
+		  }	
+		}
+		else{
+		  textareaObj.oninput=function(){
+		    num=200-this.value.length;
+		    remainObj.innerHTML="剩余"+num+"字";
+		  }
+		};
+</script>
+	
+</body>
+</html>

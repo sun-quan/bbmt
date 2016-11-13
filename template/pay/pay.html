@@ -1,0 +1,206 @@
+<ion-view class="pay">
+    <ion-header-bar align-title="center" class="bar-energized">
+        <a class="btn-back" ng-click="go(-1)"></a>
+        <h1 class="title">订单支付</h1>
+    </ion-header-bar>
+    <ion-content overflow-scroll="false">
+        <div ng-show="$parent.shoppingCart.length > 0">
+            <div class="item item-divider">
+                预定餐品
+                <span class="pull-right">共{{shoppingCartTotalNum}}件</span>
+            </div>
+            <ul class="list">
+                <li class="xs-item1" ng-repeat="item in shoppingCart | filter : {checked:true} | orderBy: 'commodityId'">
+                    <img ng-src="{{imgRoot + item.scan}}"/>
+                    <div class="desc">
+                        <p ng-bind="item.commodityName"></p>
+                        <div class="bottom">
+                            <span class="txt-price" ng-bind="'￥' + item.promotion"></span>
+                            <div class="number">
+                                <span class="count" ng-bind="'× ' + item.count"></span>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <div class="item item-divider title">
+                取餐方式
+            </div>
+            <div class="mealWay">
+                <div class="way">
+                    <label class="checkbox">
+                        <input type="radio" name="mealWay" ng-change="changeTakeType()" value="1" ng-model="$parent.order.takeType">
+                        <span>门店自提</span>
+                    </label>
+                </div>
+                <div class="way" ng-if="currStore.distributeFlag == 1">
+                    <label class="checkbox">
+                        <input type="radio" name="mealWay" ng-change="changeTakeType()" value="2" ng-model="$parent.order.takeType">
+                        <span>门店配送</span>
+                    </label>
+                </div>
+                <div class="way">
+                    <label class="checkbox">
+                        <input type="radio" name="mealWay" ng-change="changeTakeType()" value="3" ng-model="$parent.order.takeType">
+                        <span>企业团餐</span>
+                    </label>
+                </div>
+            </div>
+            <div class="store" ng-if="$parent.order.takeType == 1">
+                <div class="name" ng-bind="$parent.currStore.name"></div>
+                <div class="address" ng-bind="$parent.currStore.address"></div>
+            </div>
+            <div class="takeType2" ng-if="$parent.order.takeType == 2">
+                <div class="postmark">
+                </div>
+                <div class="content" ui-sref="address({from:'pay'})">
+                    <div class="name-phone" ng-if="$parent.currUserAddress.addressId">
+                        <div class="name" ng-bind="$parent.currUserAddress.consignee"></div>
+                        <div class="phone" ng-bind="$parent.currUserAddress.phone"></div>
+                    </div>
+                    <div class="address" ng-bind="$parent.currUserAddress.area + $parent.currUserAddress.address" ng-if="$parent.currUserAddress.addressId">
+                    </div>
+                    <div class="tips" ng-if="!$parent.currUserAddress.addressId">请选择收货地址</div>
+                </div>
+                <div class="postmark">
+                </div>
+            </div>
+            <div class="takeType3" ng-if="$parent.order.takeType == 3">
+                <div class="postmark">
+                </div>
+                <div class="content" ng-click="showBusinessPopup()">
+                    <div class="name-phone" ng-if="$parent.currBusiness.addressId">
+                        <div class="name" ng-bind="$parent.currBusiness.nickname"></div>
+                    </div>
+                    <div class="address" ng-bind="$parent.currBusiness.address" ng-if="$parent.currBusiness.addressId">
+                    </div>
+                    <div class="discount" ng-bind="$parent.TakeType3.discount * 10 + '折'" ng-if="$parent.currBusiness.addressId">
+                    </div>
+                    <div class="tips" ng-if="!$parent.currBusiness.addressId">请选择参团地址</div>
+                </div>
+                <div class="postmark">
+                </div>
+            </div>
+            <div class="endTime" ng-if="$parent.order.takeType == 3 && $parent.currBusiness.addressId">
+                截止时间: {{mealInfoList[mealInfoId - 1].teamtime}}
+            </div>
+            <div class="item item-divider title">
+                {{$parent.order.takeType == 1?'取餐':'配送'}}时间
+            </div>
+            <div class="time" ng-click="timePickerShowFn()">
+                <span ng-bind="$parent.exchangeDate"></span>
+                <span ng-bind="$parent.exchangeTime"></span>
+            </div>
+            <div class="item item-divider title user-phone-title">
+                提货手机号码
+            </div>
+            <div class="user-phone">
+                <input type="tel" placeholder="请输入您的提货手机号码" ng-model="$parent.order.cellPhone" ng-change="calcOrderPrice()" maxlength="11"/>
+            </div>
+            <div class="item item-divider title">
+                优惠券
+            </div>
+            <div class="coupons" ng-click="openCouponsModal()">
+                <span ng-bind="$parent.currCoupons.name"class="coupons-name" ng-if="$parent.currCoupons.couponsId"></span>
+                <span class="coupons-name" ng-if="!$parent.currCoupons.couponsId">请选择优惠券</span>
+            </div>
+            <div class="item item-divider title">
+                餐品费用
+                <span class="pull-right" ng-bind="shoppingCartTotalPrice|currency :'￥':2"></span>
+            </div>
+            <div class="item item-divider title" ng-if="$parent.order.takeType == 3 && $parent.currBusiness.addressId">
+                团餐折扣
+                <span class="pull-right" ng-bind="((1 - $parent.TakeType3.discount)*shoppingCartTotalPrice|currency :'-￥':2)"></span>
+            </div>
+            <div class="item item-divider title" ng-if="$parent.currCoupons.couponsId">
+                优惠券
+                <span class="pull-right" ng-bind="($parent.currCoupons.price|currency :'-￥':2)"></span>
+            </div>
+            <div class="item item-divider title" ng-repeat="discountInfo in discountList">
+                {{discountInfo.activityName + '|' + discountInfo.profitName}}
+                <span class="pull-right" ng-bind="(discountInfo.total|currency :'-￥':2)" ng-if="discountInfo.total != 0"></span>
+            </div>
+            <div class="item item-divider title" ng-if="$parent.order.takeType == 2">
+                配送费
+                <span class="pull-right" ng-bind="($parent.currStore.distributePrice|currency :'+￥':2)"></span>
+            </div>
+            <div class="item item-divider title" style="border-bottom: 0">
+                总计
+                <span class="pull-right" ng-bind="($parent.order.price|currency :'￥':2)"></span>
+            </div>
+            <div></div>
+            <div class="item item-divider title">
+                支付方式
+            </div>
+            <div class="payType">
+                <i class="payIcon"></i>
+                <span class="supportType">微信支付</span>
+                <span class="tip">暂时只支持微信支付</span>
+            </div>
+        </div>
+    </ion-content>
+    <div class="bar bar-footer bar-dark" ng-show="$parent.shoppingCart.length > 0">
+        <div class="row-basket">
+            <div class="media-basket">
+                <div class="media-body">
+                    <div class="type2">
+                        <span>实付款:</span>
+                    </div>
+                    <div class="price" ng-bind="($parent.order.price|currency :'￥':2)"></div>
+                </div>
+                <div class="tips" ng-bind="'(满'+ $parent.currStore.distributeCost + '元支持配送,配送费' + $parent.currStore.distributePrice + '元)'" ng-if="$parent.order.takeType == 2"></div>
+            </div>
+            <div class="basket-btn" ng-click="submitOrder()" ng-disabled="paying">
+                <a class="btn-o-tobuy {{shoppingCartTotalPrice <= 0 ? 'btn-o-tobuy-none' : 'font16'}}" ng-bind="shoppingCartTotalPrice > 0 ? '确认支付':'至少选择一款商品'"></a>
+            </div>
+        </div>
+    </div>
+</ion-view>
+<script id="businessAddress.html" type="text/ng-template">
+    <ion-modal-view>
+        <ion-header-bar class="bar-energized">
+            <a class="btn-back" ng-click="closeBusinessAddressModal()"></a>
+            <h1 class="title">参团公司地址</h1>
+        </ion-header-bar>
+        <ion-content>
+            <ion-list class="addressChoose">
+                <ion-item ng-repeat="item in businessAddressList" ng-click="useBusinessAddressModal(item)" ng-class="{'active':$parent.currBusiness == item}">
+                    <div class="content">
+                        <div class="title">{{::item.nickname}}</div>
+                        <div class="address">{{::item.address}}</div>
+                    </div>
+                </ion-item>
+            </ion-list>
+        </ion-content>
+    </ion-modal-view>
+</script>
+<script id="coupons.html" type="text/ng-template">
+    <ion-modal-view class="coupons">
+        <ion-header-bar class="bar-energized">
+            <a class="btn-back" ng-click="closeCouponsModal()"></a>
+            <div class="title">我的优惠券</div>
+            <a class="btn-right" ng-click="noUseCoupons()">不使用</a>
+        </ion-header-bar>
+        <ion-content>
+            <div class="item-coupons" ng-repeat="item in couponsList" ng-click="useCoupons(item)" ng-class="{'unavailable':item.status != 1}">
+                <div class="coupons-left">
+                    <div class="price" ng-bind="'￥'+item.price"></div>
+                </div>
+                <div class="coupons-right-part1">
+                </div>
+                <div class="coupons-right-part2">
+                    <div class="coupons-name">
+                        <span ng-bind="item.name"></span>
+                    </div>
+                    <div class="coupons-time" ng-bind="'有效期：'+item.displayTime">
+                    </div>
+                    <div class="coupons-remark" ng-bind="'[使用说明] '+item.remark">
+                    </div>
+                </div>
+                <div class="coupons-right-part3">
+                </div>
+            </div>
+            <div class="tips" ng-if="couponsList.length == 0">没有合适的优惠券</div>
+        </ion-content>
+    </ion-modal-view>
+</script>

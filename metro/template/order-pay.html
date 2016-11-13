@@ -1,0 +1,74 @@
+<ion-view class="pay">
+    <ion-header-bar align-title="center" class="bar-energized">
+<!--         <a class="btn-back" ng-click="go(-1)"></a>
+ -->        <h1 class="title">订单支付</h1>
+    </ion-header-bar>
+    <ion-content overflow-scroll="false">
+        <div >
+            <div class="item item-divider">
+                预定餐品
+                <span class="pull-right">共{{order.commodityNumber}}件</span>
+            </div>
+            <ul class="list">
+                <li class="xs-item1" ng-repeat="item in order.commodityList">
+                    <img ng-src="{{global.adminUrl+item.commodityImg}}"/>
+                    <div class="desc">
+                        <p ng-bind="item.commodityName"></p>
+                        <div class="bottom">
+                            <span class="txt-price" ng-bind="item.promotion|currency :'￥'"></span>
+                            <div class="number">
+                                <span class="count" ng-bind="'× '+item.totalNum"></span>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+          
+            
+            <div class="item item-divider title">
+                餐品费用
+                <span class="pull-right" ng-bind="order.total|currency :'￥'"></span>
+            </div>
+           
+            
+            <div></div>
+            <div class="item item-divider title">
+                支付方式
+            </div>
+            <div class="payType">
+                <i class="payIcon"></i>
+                <span class="supportType">微信支付</span>
+                <span class="tip">暂时只支持微信支付</span>
+            </div>
+        </div>
+     
+    </ion-content>
+    <div ng-if="paying" class="payLoadingBG">
+        <div class="outside">
+            <div class="confirm-content fade in">
+                <div>
+                    <span>支付中...</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bar bar-footer bar-dark" >
+        <div class="row-basket">
+            <button  class="pull-right" ng-click="submitOrder()" ng-disabled="paying">
+                <a class="btn-o-tobuy font16">确认支付</a>
+            </button>
+          
+            <div class="media media-basket">
+                <div class="media-left">
+                    <div class="type2">
+                        <span>实付款:</span>
+                    </div>
+                </div>
+                <div class="media-body">
+                    <div class="media-heading" ng-bind="'￥'+ order.total"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+  
+</ion-view>

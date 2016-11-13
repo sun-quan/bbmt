@@ -1,0 +1,53 @@
+<ion-view class="commodityDetail">
+    <ion-header-bar class="bar-energized">
+        <a class="btn-back" ng-click="go(-1)"></a>
+        <div class="title">商品详情</div>
+    </ion-header-bar>
+    <ion-content overflow-scroll="false">
+        <div ng-if="currItem">
+            <div class="bigImg">
+                <img ng-src="{{imgRoot + currItem.commodityBigImg}}"/>
+            </div>
+            <div class="desc">
+                <p class="title" ng-bind="currItem.commodityName"></p>
+                <div class="bottom">
+                    <span class="txt-price" ng-bind="'￥' + currItem.promotion"></span>
+                    <div class="number">
+                            <span class="minusCount">
+                                <div ng-show="currItem.count > 0" style="display: table">
+                                    <span class="minus" ng-click="removeItem(currItem)"></span>
+                                    <span class="count" ng-bind="currItem.count"></span>
+                                </div>
+                            </span>
+                        <span class="plus" ng-click="addItem(currItem,$event)"></span>
+                    </div>
+                </div>
+                <div class="commodityDes" ng-bind="currItem.intro"></div>
+            </div>
+            <div class="split-line"></div>
+            <div class="commodityContent">
+                <img ng-src="{{imgRoot + img.modelImg}}" ng-repeat="img in currItem.packageContents"/>
+            </div>
+        </div>
+        <div ng-if="!currItem" class="empty">
+            该商品准备中,敬请期待!
+        </div>
+    </ion-content>
+    <div class="bar bar-footer bar-dark" ng-if="currItem">
+        <div class="row-basket">
+            <div class="media-basket">
+                <div class="media-body">
+                    <i class="icon-basket">
+                        <div class="xs-badge">
+                            <span class="badge" ng-bind="shoppingCartTotalNum"></span>
+                        </div>
+                    </i>
+                    <div class="price" ng-bind="'￥' + (shoppingCartTotalPrice|number:2)"></div>
+                </div>
+            </div>
+            <div class="basket-btn" ng-click="go('shoppingCart')" style="pointer-events: auto;">
+                <a class="btn-o-tobuy {{shoppingCartTotalPrice <= 0 ? 'btn-o-tobuy-none' : 'font16'}}" ng-bind="shoppingCartTotalPrice > 0 ? '去结算':'选择任意餐品'"></a>
+            </div>
+        </div>
+    </div>
+</ion-view>

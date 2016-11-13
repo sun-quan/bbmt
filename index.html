@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html ng-app="xsyh" manifest="xsyh.manifest">
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="initial-scale=1,maximum-scale=1,user-scalable=no,width=device-width,height=device-height"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <title>巴比面点</title>
+    <script src="//hm.baidu.com/hm.js?e9b9383b7e3459adf61a354deca9a256"></script>
+    <script type="text/javascript">
+        window.applicationCache.addEventListener("updateready", function(e) {
+            if (window.applicationCache.status == window.applicationCache.UPDATEREADY) {
+                window.applicationCache.swapCache();
+                window.location.reload();
+            }
+        }, false);
+    </script>
+    <!--<link rel="stylesheet" href="assets/library/ionic/css/ionic.min.css">-->
+    <link rel="stylesheet" href="http://lib.xs1h.com/ionic/v1.2.4/css/ionic.min.css">
+    <link rel="stylesheet" href="css/main-min-299bfea0f0.css">
+    <!--<script src="js/ionic.bundle.plus.min.js"></script>-->
+    <script src="http://lib.xs1h.com/ionic/v1.2.4/js/ionic.bundle.min.js"></script>
+    <!--<script src="assets/library/qrcode/qrcode.min.js"></script>-->
+    <!--<script src="assets/library/barcode/bytescoutbarcode128_1.00.07.js"></script>-->
+    <script src="js/debug.js"></script>
+    <!--<script src="js/main-min-4fb4a0a007.js"></script>-->
+    <!--<base href="/">-->
+</head>
+<body ng-controller="mainCtrl">
+<ion-nav-view name="mainContent">
+</ion-nav-view>
+<div class="share-mask" ng-click="closeMask()" ng-style="{true:{'display':'block'}}[activityInfo.showShareMask]"></div>
+<script id="storeAddress.html" type="text/ng-template">
+    <ion-modal-view class="store">
+        <ion-header-bar class="bar-energized">
+            <!--<h1 class="title">门店选择</h1>-->
+            <div class="search">
+                <input type="search" ng-model="$parent.$parent.storeKey" placeholder="请输入门店名称或地址">
+            </div>
+        </ion-header-bar>
+        <ion-content scroll="false">
+            <div class="nearby" ng-if="showNearbyStore">
+                <div class="title">附近门店</div>
+                <div class="content">
+                    <ul class="storeList">
+                        <li ng-repeat="item in nearbyStoreList" ng-click="closeAddressModal(item)" ng-class="{'active':currStore == item}">
+                            <div class="store-content">
+                                <div class="name">{{::item.name}}</div>
+                                <div class="address">{{::item.address}}</div>
+                                <div class="distance"><i class="ion-point"></i>距您{{::item.distance}}米</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="all-store">
+                <div class="title">全部门店</div>
+                <div class="content">
+                    <div class="subList">
+                        <ion-scroll overflow-scroll="false">
+                            <ul>
+                                <li ng-repeat="item in districtStoreList" ng-class="{'active' : $index == currDistrictIndex}" ng-click="changeStoreList($index)">
+                                    {{item.districtName}}
+                                    <!--<div class="xs-badge">-->
+                                        <!--<span ng-bind="item.count"></span>-->
+                                    <!--</div>-->
+                                </li>
+                            </ul>
+                        </ion-scroll>
+                    </div>
+                    <div class="storeList">
+                        <ion-scroll overflow-scroll="false" delegate-handle="storeListScroll">
+                            <ul>
+                                <li ng-repeat="item in districtStoreList[currDistrictIndex].storeList | filter:storeFilter" ng-click="closeAddressModal(item)" ng-class="{'active':currStore == item}">
+                                    <div class="store-content">
+                                        <div class="name">{{::item.name}}</div>
+                                        <div class="address">{{::item.address}}</div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </ion-scroll>
+                    </div>
+                </div>
+            </div>
+        </ion-content>
+    </ion-modal-view>
+</script>
+<div ng-if="showMutilScroll" class="ion-mutil-scroll" ng-class="{'show':showMutilScroll}">
+    <div class="header">
+        <div class="title" ng-bind="'收货时间'"></div>
+        <i class="close" ng-click="closeMutilScrollPopup()"></i>
+    </div>
+    <div class="body">
+        <ion-scroll overflow-scroll="false" delegate-handle="scroll{{$index}}" ng-repeat="scroll in scrollSource track by $index">
+            <ul>
+                <li ng-repeat="item in scroll" ng-class="{'active':item.selected}" ng-click="changeActiveIndex($parent.$index,$index)">
+                    <span ng-bind="item.valueName"></span>
+                </li>
+            </ul>
+        </ion-scroll>
+    </div>
+    <div class="footer">
+        <a class="xs-btn" ng-click="MutilScrollPopupConfirm()" ng-bind="'确定'"></a>
+    </div>
+</div>
+</body>
+</html>

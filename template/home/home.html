@@ -1,0 +1,148 @@
+<ion-view class="home" cache-view="false">
+    <ion-header-bar align-title="center" class="bar-energized">
+        <div class="title">
+            <span class="container icon" ng-click="$parent.openAddressModal()">
+                <span ng-bind="$parent.currStore.name" class="storeName ng-binding"></span>
+                <i class="ion-ios-arrow-right"></i>
+            </span>
+        </div>
+    </ion-header-bar>
+    <ion-content overflow-scroll="false">
+        <div ng-repeat="frameInfo in frameList" class="frame">
+            <!--1*1布局-->
+            <div ng-if="frameInfo.frame == 1" class="frame{{::frameInfo.frame}}">
+                <div ng-repeat="modelInfo in frameInfo.models" class="modelInfo">
+                    <!--轮播组件-->
+                    <div ng-if="modelInfo.type == 1 && modelInfo.elements" class="model{{::modelInfo.type}}">
+                        <ion-slide-box  auto-play="true" delegate-handle="banner" show-pager="false" on-slide-changed="updateSlideBox()">
+                            <ion-slide class="repeat-modify" ng-repeat="item in modelInfo.elements">
+                                <a ng-click="changeView(frameInfo,modelInfo,item)"><img ng-src="{{::(imgRoot + item.image)}}"></a>
+                            </ion-slide>
+                        </ion-slide-box>
+                    </div>
+                    <!--URL(1*1 || 1*2 || 1*4布局)-->
+                    <div ng-if="modelInfo.type == 2" class="model{{::modelInfo.type}}" ng-click="changeView(frameInfo,modelInfo)">
+                        <img ng-src="{{::(imgRoot + modelInfo.elements[0].image)}}" alt="" />
+                    </div>
+                    <!--取餐号-->
+                    <div ng-if="modelInfo.type == 6 && modelInfo.elements[0].value != ''" class="model{{::modelInfo.type}}" ng-click="changeView(frameInfo,modelInfo)">
+                        <div class="title">{{::modelInfo.elements[0].type == 5 ? '优惠券':'取餐号'}}</div>
+                        <div class="orderNumber" ng-if="modelInfo.elements[0].type == 7">{{::modelInfo.elements[0].value | filterModel:'orderNumber'}}</div>
+                        <div class="address" ng-if="modelInfo.elements[0].type == 7">{{::modelInfo.elements[0].value | filterModel:'address'}}</div>
+                        <div class="coupons" ng-if="modelInfo.elements[0].type == 5">您还有<span class="couponsNumber" ng-bind="modelInfo.elements[0].value"></span>张优惠券可用</div>
+                    </div>
+                </div>
+            </div>
+            <!--1*2 || 1*3 || 1*4布局-->
+            <div ng-if="frameInfo.frame == 2 || frameInfo.frame == 3 || frameInfo.frame == 4" class="frame{{::frameInfo.frame}}">
+                <div ng-repeat="modelInfo in frameInfo.models" class="modelInfo">
+                    <!--商品详情(1*2布局)-->
+                    <div ng-if="modelInfo.type == 3" class="model{{::modelInfo.type}}" ng-click="changeView(frameInfo,modelInfo)">
+                        <img ng-src="{{::(imgRoot + modelInfo.elements[0].image)}}" alt="" />
+                    </div>
+                    <!--URL(1*1 || 1*2 || 1*4布局)-->
+                    <div ng-if="modelInfo.type == 2" class="model{{::modelInfo.type}}" ng-click="changeView(frameInfo,modelInfo)">
+                        <img ng-src="{{::(imgRoot + modelInfo.elements[0].image)}}" alt="" />
+                    </div>
+                    <!--虚拟类目(1*4布局)-->
+                    <div ng-if="modelInfo.type == 4" class="model{{::modelInfo.type}}"
+                         ng-click="changeView(frameInfo,modelInfo)">
+                        <div class="theme-item" ng-click="changeView(frameInfo,modelInfo)">
+                            <a>
+                                <img ng-src="{{::(imgRoot + modelInfo.elements[0].image)}}"/>
+                                <div class="theme-name">{{::item.name}}</div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--1*3特别版布局-->
+            <div ng-if="frameInfo.frame == 5" class="frame{{::frameInfo.frame}}">
+                <div class="frame-left">
+                    <div class="modelInfo">
+                        <!--商品详情(1*2布局)-->
+                        <div ng-if="frameInfo.models[0].type == 3" class="model{{::frameInfo.models[0].type}}" ng-click="changeView(frameInfo,frameInfo.models[0])">
+                            <img ng-src="{{::(imgRoot + frameInfo.models[0].elements[0].image)}}" alt="" />
+                        </div>
+                        <!--URL(1*1 || 1*2 || 1*4布局)-->
+                        <div ng-if="frameInfo.models[0].type == 2" class="model{{::frameInfo.models[0].type}}" ng-click="changeView(frameInfo,frameInfo.models[0])">
+                            <img ng-src="{{::(imgRoot + frameInfo.models[0].elements[0].image)}}" alt="" />
+                        </div>
+                        <!--虚拟类目(1*4布局)-->
+                        <div ng-if="frameInfo.models[0].type == 4" class="model{{::frameInfo.models[0].type}}"
+                             ng-click="changeView(frameInfo,frameInfo.models[0])">
+                            <div class="theme-item" ng-click="changeView(frameInfo,frameInfo.models[0])">
+                                <a>
+                                    <img ng-src="{{::(imgRoot + frameInfo.models[0].elements[0].image)}}"/>
+                                    <div class="theme-name">{{::item.name}}</div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="frame-right">
+                    <div class="modelInfo">
+                        <!--商品详情(1*2布局)-->
+                        <div ng-if="frameInfo.models[1].type == 3" class="model{{::frameInfo.models[1].type}}" ng-click="changeView(frameInfo,frameInfo.models[1])">
+                            <img ng-src="{{::(imgRoot + frameInfo.models[1].elements[0].image)}}" alt="" />
+                        </div>
+                        <!--URL(1*1 || 1*2 || 1*4布局)-->
+                        <div ng-if="frameInfo.models[1].type == 2" class="model{{::frameInfo.models[1].type}}" ng-click="changeView(frameInfo,frameInfo.models[1])">
+                            <img ng-src="{{::(imgRoot + frameInfo.models[1].elements[0].image)}}" alt="" />
+                        </div>
+                        <!--虚拟类目(1*4布局)-->
+                        <div ng-if="frameInfo.models[1].type == 4" class="model{{::frameInfo.models[1].type}}"
+                             ng-click="changeView(frameInfo,frameInfo.models[1])">
+                            <div class="theme-item" ng-click="changeView(frameInfo,frameInfo.models[1])">
+                                <a>
+                                    <img ng-src="{{::(imgRoot + frameInfo.models[1].elements[0].image)}}"/>
+                                    <div class="theme-name">{{::item.name}}</div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modelInfo">
+                        <!--商品详情(1*2布局)-->
+                        <div ng-if="frameInfo.models[2].type == 3" class="model{{::frameInfo.models[2].type}}" ng-click="changeView(frameInfo,frameInfo.models[2])">
+                            <img ng-src="{{::(imgRoot + frameInfo.models[2].elements[0].image)}}" alt="" />
+                        </div>
+                        <!--URL(1*1 || 1*2 || 1*4布局)-->
+                        <div ng-if="frameInfo.models[2].type == 2" class="model{{::frameInfo.models[2].type}}" ng-click="changeView(frameInfo,frameInfo.models[2])">
+                            <img ng-src="{{::(imgRoot + frameInfo.models[2].elements[0].image)}}" alt="" />
+                        </div>
+                        <!--虚拟类目(1*4布局)-->
+                        <div ng-if="frameInfo.models[2].type == 4" class="model{{::frameInfo.models[2].type}}"
+                             ng-click="changeView(frameInfo,frameInfo.models[2])">
+                            <div class="theme-item" ng-click="changeView(frameInfo,frameInfo.models[2])">
+                                <a>
+                                    <img ng-src="{{::(imgRoot + frameInfo.models[2].elements[0].image)}}"/>
+                                    <div class="theme-name">{{::item.name}}</div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+    <ion-footer-bar>
+        <div class="footer-menu">
+            <div class="menu-home" ng-class="{'checked':currFooterMenu == 0}" ng-click="enter('home',0)">
+                <i class="icon"></i>
+                <div class="name" ng-bind="'首页'"></div>
+            </div>
+            <div class="menu-order" ng-class="{'checked':currFooterMenu == 1}" ng-click="enter('order',1)">
+                <i class="icon"></i>
+                <div class="name" ng-bind="'订单'"></div>
+            </div>
+            <div class="menu-car" ng-class="{'checked':currFooterMenu == 2}" ng-click="enter('shoppingCart',2)">
+                <i class="icon"></i>
+                <div class="name" ng-bind="'购物车'"></div>
+            </div>
+            <div class="menu-my" ng-class="{'checked':currFooterMenu == 3}" ng-click="enter('my',3)">
+                <i class="icon"></i>
+                <div class="name" ng-bind="'我的'"></div>
+            </div>
+        </div>
+    </ion-footer-bar>
+</ion-view>
